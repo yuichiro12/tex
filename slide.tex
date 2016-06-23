@@ -1,0 +1,66 @@
+%!TEX platex=1
+\documentclass[11pt,xcolor=dvipsnames,table,dvipdfmx]{beamer}
+\usepackage{amsmath, amssymb}
+\usepackage{latexsym}
+\usepackage{ascmac}
+\usepackage{bm}
+
+%Beamerの設定
+\usetheme{Boadilla}
+%Beamerフォント設定
+\usepackage{txfonts} % TXフォント
+\usepackage[deluxe]{otf} % 日本語多ウェイト化
+\renewcommand{\familydefault}{\sfdefault}  % 英文をサンセリフ体に
+\renewcommand{\kanjifamilydefault}{\gtdefault}  % 日本語をゴシック体に
+\usefonttheme{professionalfonts}
+\setbeamerfont{alerted text}{series=\bfseries} % Alertを太字
+\setbeamerfont{section in toc}{series=\mdseries} % 目次は太字にしない
+\setbeamerfont{frametitle}{size=\Large} % フレームタイトル文字サイズ
+\setbeamerfont{title}{size=\LARGE} % タイトル文字サイズ
+\setbeamerfont{date}{size=\small}  % 日付文字サイズ
+
+
+%フラットデザイン化
+\setbeamertemplate{blocks}[rounded] % Blockの影を消す
+\useinnertheme{circles} % 箇条書きをシンプルに
+\setbeamertemplate{navigation symbols}{} % ナビゲーションシンボルを消す
+\setbeamertemplate{footline}[frame number] % フッターはスライド番号のみ
+
+%タイトルページ
+\setbeamertemplate{title page}{%
+    \vspace{2.5em}
+    {\usebeamerfont{title} \usebeamercolor[fg]{title} \inserttitle \par}
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle \par}
+    \vspace{1.5em}
+    \begin{flushright}
+        \usebeamerfont{author}\insertauthor\par
+        \usebeamerfont{institute}\insertinstitute \par
+        \vspace{3em}
+        \usebeamerfont{date}\insertdate\par
+        \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+    \end{flushright}
+}
+
+% graphicx.sty
+\usepackage{graphicx}
+
+%
+\def\qed{\hfill $\Box$}
+
+\AtBeginSection[]{
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+
+%タイトル
+\title{スライドのタイトル}
+\author{\textbf{本田雄一郎}}
+\date{2016/00/00}
+\institute{森田研 M1}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{}
+
+\end{frame}
+\end{document}

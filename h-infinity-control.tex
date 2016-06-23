@@ -1,0 +1,98 @@
+%!TEX platex=1
+\documentclass[11pt,xcolor=dvipsnames,table,dvipdfmx]{beamer}
+\usepackage{amsmath, amssymb}
+\usepackage{latexsym}
+\usepackage{ascmac}
+\usepackage{bm}
+
+%Beamerの設定
+\usetheme{Boadilla}
+%Beamerフォント設定
+\usepackage{txfonts} % TXフォント
+\usepackage[deluxe]{otf} % 日本語多ウェイト化
+\renewcommand{\familydefault}{\sfdefault}  % 英文をサンセリフ体に
+\renewcommand{\kanjifamilydefault}{\gtdefault}  % 日本語をゴシック体に
+\usefonttheme{professionalfonts}
+\setbeamerfont{alerted text}{series=\bfseries} % Alertを太字
+\setbeamerfont{section in toc}{series=\mdseries} % 目次は太字にしない
+\setbeamerfont{frametitle}{size=\Large} % フレームタイトル文字サイズ
+\setbeamerfont{title}{size=\LARGE} % タイトル文字サイズ
+\setbeamerfont{date}{size=\small}  % 日付文字サイズ
+
+
+%フラットデザイン化
+\setbeamertemplate{blocks}[rounded] % Blockの影を消す
+\useinnertheme{circles} % 箇条書きをシンプルに
+\setbeamertemplate{navigation symbols}{} % ナビゲーションシンボルを消す
+\setbeamertemplate{footline}[frame number] % フッターはスライド番号のみ
+
+%タイトルページ
+\setbeamertemplate{title page}{%
+    \vspace{2.5em}
+    {\usebeamerfont{title} \usebeamercolor[fg]{title} \inserttitle \par}
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle \par}
+    \vspace{1.5em}
+    \begin{flushright}
+        \usebeamerfont{author}\insertauthor\par
+        \usebeamerfont{institute}\insertinstitute \par
+        \vspace{3em}
+        \usebeamerfont{date}\insertdate\par
+        \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+    \end{flushright}
+}
+
+% graphicx.sty
+\usepackage{graphicx}
+
+%
+\def\qed{\hfill $\Box$}
+
+\AtBeginSection[]{
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+
+%タイトル
+\title{2次安定化と$H^\infty$制御理論}
+\author{\textbf{本田雄一郎}}
+\date{2016/06/27}
+\institute{森田研 M1}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{はじめに}
+ 
+\end{frame}
+
+\begin{frame}
+ 次のような不確実な線形システムを考える．
+ \[
+  \dot{x}(t) = (A+{\Delta}A(q(t)))x(t)+(B+{\Delta}B(q(t)))u(t) \tag{2.1a}
+ \]
+ \begin{block}{定義2.2}
+  $u=0$のシステム(2.1)に対して, ある正定値対称行列$P \in \mathbb{R}^{n \times n}$と$\alpha > 0$をが存在して，任意の許容可能なｎ不確実性$q(t)$に対し，リアプノフ関数$V(x)=x^{\top}Px$が
+  \[
+  \mathbb{L}(x, t) := \dot{V} = 2x^{\top}P(A+{\Delta}A(q(t)))x \leq -\alpha\|x\|^2
+  \]
+  をすべての$(x, t) \in \mathbb{R}^n \times \mathbb{R}$の組に対して満たすとき，システム(2.1)は\alert{2次可安定}という．
+  また，閉ループが2次安定となるような状態フィードバック制御$u = -Kx(t)$が存在するとき，システム(2.1)は\alert{線形状態フィードバックによって2次可安定}であるという．
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \begin{block}{定理2.3}
+  ある$\epsilon > 0$が存在して，次の代数的リッカチ方程式
+  \begin{align}
+   &(A-B{\Xi}E^{\top}_{2}E_1)^{\top}P+P(A-B{\Xi}E^{\top}_{2}E_1)\notag\\
+   &+P(DD^{\top}-B{\Xi}B^{\top}-\frac{1}{\epsilon}B{\Phi}^{\top}{\Phi}B^{\top})P\notag\\
+   &+E^{\top}_{1}(I-E_{2}{\Xi}E^{\top}_{2})E_1+{\epsilon}I = 0 \tag{2.4}
+  \end{align}
+  が正定値対称行列$P$を解に持つとき，不確実なシステム(2.1)は線形制御で2次可安定であるという．
+逆に，システム(2.1)が線形制御で2次可安定ならば，ある$\epsilon^* > 0$が存在して，
+ \end{block}
+\end{frame}
+
+\begin{frame}{本論文の成果}
+ 本論文のメインテーマは，不確実なシステムの2次安定化による時間領域の結果と，$H^\infty$最適化による周波数領域の結果の相互作用を見ることであった．これらの関係は，定理2.7，定理3.4によって見ることができた．この関係は1960年代から知られていたが，2次安定化による時間領域と，$H^\infty$最適化による周波数領域の論文ではあまり注目されていなかった．いま，再びこれらの関係を見ることで，双方の分野でより価値が認められるようになることが期待される．実際，多くの2次安定化の結果は，$H^\infty$最適化の特別な場合と見ることができる．
+\end{frame}
+\end{document}

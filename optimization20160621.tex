@@ -1,0 +1,161 @@
+%!TEX encoding=UTF-8 unicode
+\documentclass[11pt,xcolor=dvipsnames,table,dvipdfmx]{beamer}
+\usepackage{amsmath, amssymb}
+\usepackage{latexsym}
+\usepackage{ascmac}
+\usepackage{bm}
+
+%Beamerの設定
+\usetheme{Boadilla}
+%Beamerフォント設定
+\usepackage{txfonts} % TXフォント
+\usepackage[deluxe]{otf} % 日本語多ウェイト化
+\renewcommand{\familydefault}{\sfdefault}  % 英文をサンセリフ体に
+\renewcommand{\kanjifamilydefault}{\gtdefault}  % 日本語をゴシック体に
+\usefonttheme{professionalfonts}
+\setbeamerfont{alerted text}{series=\bfseries} % Alertを太字
+\setbeamerfont{section in toc}{series=\mdseries} % 目次は太字にしない
+\setbeamerfont{frametitle}{size=\Large} % フレームタイトル文字サイズ
+\setbeamerfont{title}{size=\LARGE} % タイトル文字サイズ
+\setbeamerfont{date}{size=\small}  % 日付文字サイズ
+
+
+%フラットデザイン化
+\setbeamertemplate{blocks}[rounded] % Blockの影を消す
+\useinnertheme{circles} % 箇条書きをシンプルに
+\setbeamertemplate{navigation symbols}{} % ナビゲーションシンボルを消す
+\setbeamertemplate{footline}[frame number] % フッターはスライド番号のみ
+
+%
+\def\qed{\hfill $\Box$}
+
+\begin{document}
+
+\title{数理最適化セミナー}
+\author{本田雄一郎}
+
+\begin{frame}{n変数実数値関数の2回微分}
+\begin{block}{ヘッセ行列}
+${\bm x} = (x_1, ...,x_n)$における$f$のヘッセ行列$\nabla^2f({\bm x})$を以下のように定義する.
+\begin{equation*}
+ \nabla^2f({\bm x}) = \begin{bmatrix}
+\cfrac{\partial^2 f({\bm x})}{\partial x_1^2} & \cfrac{\partial^2 f({\bm x})}{\partial x_1\partial x_2} & \cdots & \cfrac{\partial^2 f({\bm x})}{\partial x_1\partial x_n} \\[16pt]
+\cfrac{\partial^2 f({\bm x})}{\partial x_2\partial x_1} & \cfrac{\partial^2 f({\bm x})}{\partial x_2^2} & \cdots & \cfrac{\partial^2 f({\bm x})}{\partial x_2\partial x_n} \\[16pt]
+\vdots & \vdots & \ddots & \vdots \\[16pt]
+\cfrac{\partial^2 f({\bm x})}{\partial x_n\partial x_1} & \cfrac{\partial^2 f({\bm x})}{\partial x_n\partial x_2} & \cdots & \cfrac{\partial^2 f({\bm x})}{\partial x_n^2}
+\end{bmatrix}
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}{n変数実数値関数の2回微分}
+\begin{block}{2回微分可能の定義}
+$\displaystyle \lim_{\lambda \to 0}\frac{o(\lambda)}{\lambda}=0$を満たすある$o$が存在して,
+\begin{equation*}
+  f({\bm x}+{\bm d})= f({\bm x})+{\nabla}f({\bm x})^{\top}({\bm d})+\frac{1}{2}({\bm d})^{\top}\nabla^{2}f({\bm x}){\bm d}+o(\|{\bm d}\|^2)
+\end{equation*}
+が成り立つとき, ${\bm x}$において$f$は2回微分可能であるという.\\
+更に, $\nabla^{2}f({\bm x})$が${\bm x}$について連続ならば, $f$は連続的2回微分可能であるという.
+\end{block}
+\end{frame}
+
+\begin{frame}{テイラーの定理}
+\section{テイラーの定理}
+\begin{block}{定理4.6(テイラーの定理)}
+ 関数$f: \mathbb{R}^{n} \to \mathbb{R}$が開凸集合$X \subseteq \mathbb{R}$上で2回連続微分可能とする.\\
+このとき,
+ \[
+  \begin{flalign}
+  & {\forall}{\bm x},{\bm y} \in X, {\exist}\tau \in (0, 1); \\
+  & f({\bm x})-f({\bm y})={\nabla}f({\bm y})^{\top}({\bm x}-{\bm y})+\frac{1}{2}({\bm x}-{\bm y})^{\top}{\nabla}^{2}f((1-\tau){\bm x}+{\tau}{\bm y})({\bm x}-{\bm y})
+  \end{flalign}
+ \]
+\end{block}
+
+\begin{block}{定理4.7}
+ $X \subseteq \mathbb{R}^{n}$が開凸集合で, $f: X \to \mathbb{R}$が$X$上で\\
+ 連続的2回微分可能であるとする. このとき,
+ \begin{itemize}
+  \item $f$が$X$上で凸関数 $\iff$ $\forall{\bm x} \in X, {\nabla}^{2}f({\bm x}) \in \mathbb{S}^{n}_{+}$
+  \item $\forall{\bm x} \in X, {\nabla}^{2}f({\bm x}) \in \mathbb{S}^{n}_{++}$ $\Rightarrow$ $f$は$X$上で狭義凸関数
+ \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{定理4.7の証明(1)}
+\section{定理4.7の証明}
+(1つめの主張について)\\
+($\Rightarrow$)\\
+$f$が凸関数であるとする。$X$が開集合であることから、$X$の任意の点のある近傍は$X$に含まれる。\\
+したがっていま、任意の${\bm d} \in \mathbb{R}^n$, ${\bm x} \in X$と、十分小さい$\lambda > 0$に対し、${\bm x}+\lambda{\bm d} \in X$となる。\\
+よってテイラーの定理より、点${\bm x}+\lambda{\bm d}, {\bm x}$に対し、ある$\tau \in (0, 1)$が存在して
+\begin{equation}
+\begin{flalign}
+ f({\bm x}+\lambda{\bm d})
+ &= f({\bm x})+\lambda{\nabla}f({\bm x})^{\top}{\bm d} + \frac{1}{2}\lambda{\bm d}^{\top}\nabla^{2}f((1-\tau)({\bm x}+\lambda{\bm d})+\tau{\bm x})\lambda{\bm d} \\
+ &= f({\bm x})+\lambda{\nabla}f({\bm x})^{\top}{\bm d}+\frac{\lambda^2}{2}{\bm d}^{\top}\nabla^{2}f({\bm x}+(1-\tau)\lambda{\bm d}){\bm d}
+\end{flalign}
+\end{equation}
+また、$f$は凸関数なので、勾配不等式より、
+\begin{equation}
+ f({\bm x}+\lambda{\bm d}) \geq f({\bm x})+\lambda{\nabla}f({\bm x})^{\top}{\bm d}
+\end{equation}
+\end{frame}
+
+\begin{frame}{定理4.7の証明(1)}
+\section{定理4.7の証明}
+(2)-(1)より、
+\begin{equation*}
+\begin{flalign}
+ &0 \geq -\frac{\lambda^2}{2}{\bm d}^{\top}\nabla^{2}f({\bm x}+(1-\tau)\lambda{\bm d}){\bm d} \\
+ &\iff {\bm d}^{\top}\nabla^{2}f({\bm x}+(1-\tau)\lambda{\bm d}){\bm d} \geq 0
+\end{flalign}
+\end{equation*}
+$\lambda$はいくらでも小さく取れるから、$\lambda \to 0$として、
+\begin{equation*}
+\begin{flalign}
+ $\displaystyle \lim_{\lambda \to 0}{\bm d}^{\top}\nabla^{2}f({\bm x}+(1-\tau)\lambda{\bm d}){\bm d} = {\bm d}^{\top}\nabla^{2}f({\bm x}){\bm d} \geq 0$
+\end{flalign}
+\end{equation*}
+\end{frame}
+
+\begin{frame}{定理4.7の証明(1)}
+\section{定理4.7の証明}
+($\Leftarrow$)
+ヘッセ行列$\nabla^{2}f({\bm x})$が任意の$x \in X$に対して半正定値であるとする。テイラーの定理より、\\
+ある$\tau \in (0, 1)$が存在して、任意の${\bm x}, {\bm y} \in X$に対して、\\
+\begin{equation}
+\begin{flalign}
+ f({\bm y}) &= f({\bm x})+{\nabla}f({\bm x})^{\top}({\bm y}-{\bm x})+\frac{1}{2}({\bm y}-{\bm x})^{\top}\nabla^{2}f({\bm x}+\tau({\bm y}-{\bm x}))({\bm y}-{\bm x})\\
+ &\geq f({\bm x})+{\nabla}f({\bm x})^{\top}({\bm y}-{\bm x})
+\end{flalign}
+\end{equation}
+($\nabla^{2}f({\bm x}+\tau({\bm y}-{\bm x}))$の半正定値性を用いた)\\
+これは勾配不等式にほかならない。ゆえに$f$は凸関数である。\qed
+\end{frame}
+
+\begin{frame}{定理4.7の証明(2)}
+\section{定理4.7の証明}
+(2つめの主張について)\\
+$\forall {\bm x} \in X, \nabla^{2}f(x) \in \mathbb{S}^{n}_{++}$とする。(3)より、
+\begin{equation*}
+\begin{flalign}
+ \forall {\bm x},{\bm y} &\in X; \\
+ &f({\bm y}) > f({\bm x})+{\nabla}f({\bm x})^{\top}({\bm y}-{\bm x})\\
+ &f({\bm x}) > f({\bm y})+{\nabla}f({\bm y})^{\top}({\bm x}-{\bm y})
+\end{flalign}
+\end{equation*}
+これと$X$が凸であることから、
+\begin{equation}
+f({\bm y}) > f((1-\lambda){\bm x}+\lambda{\bm y})+{\nabla}f((1-\lambda){\bm x}+\lambda{\bm y})^{\top}(1-\lambda)({\bm y}-{\bm x})
+\end{equation}
+\begin{equation}
+f({\bm x}) > f((1-\lambda){\bm x}+\lambda{\bm y})+{\nabla}f((1-\lambda){\bm x}+\lambda{\bm y})^{\top}\lambda({\bm x}-{\bm y})
+\end{equation}
+(4)$\times\lambda +$(5)$\times(1-\lambda)$:
+\begin{equation*}
+ (1-\lambda)f({\bm x}) + {\lambda}f({\bm y}) > f((1-\lambda){\bm x}+\lambda{\bm y})
+\end{equation*}
+これより$f$は$X$上で狭義凸。\qed
+\end{frame}
+\end{document}

@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{テイラーの定理}{3}{0}{1}
+\beamer@sectionintoc {2}{定理4.7の証明}{4}{0}{2}
+\beamer@sectionintoc {3}{定理4.7の証明}{5}{0}{3}
+\beamer@sectionintoc {4}{定理4.7の証明}{6}{0}{4}
+\beamer@sectionintoc {5}{定理4.7の証明}{7}{0}{5}
