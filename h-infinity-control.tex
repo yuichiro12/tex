@@ -74,7 +74,7 @@
 
 \begin{frame}{ノルム有界型で時変な不確かさを持つ線形システムのロバスト安定化}
  \begin{block}{定義2.2}
-  $u=0$のシステム(2.1)に対して, ある正定値対称行列$P \in \mathbb{R}^{n \times n}$と$\alpha > 0$をが存在して，任意の許容可能なｎ不確実性$q(t)$に対し，リアプノフ関数$V(x)=x^{\top}Px$が
+  $u=0$のシステム(2.1)に対して, ある正定値対称行列$P \in \mathbb{R}^{n \times n}$と$\alpha > 0$が存在して，任意の許容可能な不確実性$q(t)$に対し，リアプノフ関数$V(x)=x^{\top}Px$が
   \[
   \mathbb{L}(x, t) := \dot{V} = 2x^{\top}P(A+{\Delta}A(q(t)))x \leq -\alpha\|x\|^2
   \]
@@ -94,11 +94,11 @@
 \begin{frame}{ノルム有界型で時変な不確かさを持つ線形システムのロバスト安定化}
  システムの不確かさが(2.1b)の形で与えられることにはいくつか根拠がある．まず，ノミナルプラントと不確かさ$F(t)$の線形な相互接続から(2.1b)の形が導かれる．また，マッチング条件を満たすシステムなど，多くの物理的なシステムの不確かさのモデルは(2.1b)の形をとることが知られている．\\
  システム(2.1)で$E_1 = 0$または$E_2 = 0$のとき，リッカチ方程式による解法がPetersenによって与えられている．また，ZhowとKhargonekarによって一般の場合の解法が与えられているが，$(n+m) \times (n+m)$次のリッカチ方程式を解かなければならない．本論文では，より直接的にシステム(2.1)の一般の場合の解を求める．解法もシンプルで$n \times n$次のリッカチ方程式を解くだけで良い．\\
- いま，$rank(E_2) =: i \leq j$とし，$\Sigma_2 \in \mathbb{R}^{i \times m}$を$rank(\Sigma_2) = i,\;E_2^{\top}E_2 = \Sigma_2^{\top}\Sigma_2$を満たすよう定め，$\Phi \in \mathbb{R}^{(m-i) \times m}$を$\Phi\Sigma^{\top}_2 = 0,\; \Phi\Phi^{\top} = I\,(\Phi = 0\; \text{if}\,i = m)$を満たすように選ぶ．更に，$\Xi = \Sigma_2^{\top}(\Sigma_2\Sigma_2^{\top})^{-1}\Sigma_2$とする．\\$E_2 = 0$のとき，$\Sigma_2 = 0,\,\Phi = I,\,\Xi = 0$であることに注意する．また，$rank(E_2) = m$のとき，$\Sigma_2$は正則な正方行列であり，$\Xi = (\Sigma_2^{\top}\Sigma_2)^{-1} = (E_2^{\top}E_2)^{-1},\, \Phi = 0$である．
+ いま，$rank(E_2) =: i \leq j$とし，$\Sigma_2 \in \mathbb{R}^{i \times m}$を$rank(\Sigma_2) = i,\;E_2^{\top}E_2 = \Sigma_2^{\top}\Sigma_2$を満たすよう定め，$\Phi \in \mathbb{R}^{(m-i) \times m}$を$\Phi\Sigma^{\top}_2 = 0,\; \Phi\Phi^{\top} = I\,(\Phi = 0\; \text{if}\,i = m)$を満たすように選ぶ．更に，$\Xi = \Sigma_2^{\top}(\Sigma_2\Sigma_2^{\top})^{-2}\Sigma_2$とする．\\$E_2 = 0$のとき，$\Sigma_2 = 0,\,\Phi = I,\,\Xi = 0$であることに注意する．また，$rank(E_2) = m$のとき，$\Sigma_2$は正則な正方行列であり，$\Xi = (\Sigma_2^{\top}\Sigma_2)^{-1} = (E_2^{\top}E_2)^{-1},\, \Phi = 0$である．
 \end{frame}
 
 \begin{frame}{ノルム有界型で時変な不確かさを持つ線形システムのロバスト安定化}
- \begin{block}{定理2.3}x
+ \begin{block}{定理2.3}
   ある$\epsilon > 0$が存在して，次の代数的リッカチ方程式
   \begin{align}
    (A-B{\Xi}E^{\top}_{2}E_1)^{\top}P&+P(A-B{\Xi}E^{\top}_{2}E_1)+P(DD^{\top}-B{\Xi}B^{\top}-\frac{1}{\epsilon}B{\Phi}^{\top}{\Phi}B^{\top})P\notag\\
@@ -106,11 +106,31 @@
   \end{align}
   が正定値対称行列$P$を解に持つとき，不確実なシステム(2.1)は線形制御で2次可安定である．またこのとき，状態フィードバック制御は
   \[
-   u(t) = -(\{\frac{1}{2\epsilon}\Phi^{\top}\Phi+\Xi\}B^{\top}P+{\Xi}E^{\top}_{2}E_1)x(t) \tag{2.5}
+   u(t) = -((\frac{1}{2\epsilon}\Phi^{\top}\Phi+\Xi)B^{\top}P+{\Xi}E^{\top}_{2}E_1)x(t) \tag{2.5}
   \]
   で与えられる．
-  逆に，システム(2.1)が線形制御で2次可安定ならば，ある$\epsilon^* > 0$が存在して，任意の$0 < \epsilon < \epsilon^*$となる$\epsilon$に対し，式(2.4)は$(A-B{\Xi}E^{\top}_{2}E_1+(DD^{\top}-B{\Xi}B^{\top}-\frac{1}{\epsilon}B{\Phi}^{\top}{\Phi}B^{\top})P_0)$が漸近安定であるような唯一の対称行列解$P_0$を持ち，更に$P_0$は正定値である．
+  逆に，システム(2.1)が線形制御で2次可安定ならば，ある$\epsilon^* > 0$が存在して，任意の$0 < \epsilon < \epsilon^*$となる$\epsilon$に対し，式(2.4)は$A-B{\Xi}E^{\top}_{2}E_1+(DD^{\top}-B{\Xi}B^{\top}-\frac{1}{\epsilon}B{\Phi}^{\top}{\Phi}B^{\top})P_0$が漸近安定であるような唯一の対称行列解$P_0$を持ち，更に$P_0$は正定値である．
  \end{block}
+\end{frame}
+
+\begin{frame}{ノルム有界型で時変な不確かさを持つ線形システムのロバスト安定化}
+ ＜定理2.3の証明の概略＞\\
+ ($\Rightarrow$)\\
+ 証明に次の事実を用いる：\\
+ \[
+  \forall \beta \in \mathbb{R};\;X^{\top}Y+Y^{\top}X\geq \beta X^{\top}X+\frac{1}{\beta}Y^{\top}Y \tag{A1}
+ \]
+ (2.4)が正定対称行列解$P$を解に持つとする．このとき，システム(2.1)が制御則(2.5)によって安定であることをリアプノフ関数によって示す．
+ \begin{align*}
+  \mathbb{L}(x,t) = \dot{V} = &x^{\top}((A+DF(t)E_1)^{\top}P+P(A+DF(t)E_1))x \\
+ &-2x^{\top}P(B+DF(t)E_2)((\frac{1}{2\epsilon}\Phi^{\top}\Phi+\Xi)B^{\top}P+\Xi E_2^{\top}E_2)x
+ \end{align*}
+ $\Phi\Sigma^{\top} = 0$より$\Phi E_2^{\top} = 0$．したがって事実A1と$F(t)^{\top}F(t) \leq I$から，
+ \begin{align*}
+  \mathbb{L}(x,t) = \dot{V} = &x^{\top}(A^{\top}P+PA-PB\Xi B^{\top}P-E_1^{\top}E_2\Xi B^{\top}P-PB\XiE_2^{\top}E_1\\
+  &+PDD^{\top}P+E_1^{\top}E_1-E_1^{\top}E_2\Xi E_2^{\top}E_1)x
+ \end{align*}
+と変形できる．いま，(2.4)式より，$\mathbb{L} \leq \epsilon x^{\top}x$であるから，$\alpha = \epsilon > 0$とすると，(2.5)が安定な線形制御則であることがわかる．
 \end{frame}
 
 \begin{frame}{ノルム有界型で時変な不確かさを持つ線形システムのロバスト安定化}
@@ -133,6 +153,19 @@
  \end{block}
 \end{frame}
 
+\begin{frame}{ノルム有界型で時変な不確かさを持つ線形システムのロバスト安定化}
+ ＜定理2.7の証明の概略＞\\
+ ($\Rightarrow$)\\
+ システム(2.1)が2次安定であるとする．定義2.2より，ある正定対称行列$S$が存在して，
+  $\forall F(t) \in \mathbb{F}; \;(A_0+DF(t)E)^{\top}S+S(A_0+DF(t)E) < 0$
+ であるから，$F(t) = 0$として，(2.7i)を得る．また，$Q > 0, \;E_0 \in \mathbb{R}^{n \times n}$\;($E$は正則)を次のように定める：\\
+ $-Q := A^{\top}_0 P+PA_0+PDD^{\top}P+E^{\top}E,\;\  E^{\top}_0 E_0 := E^{\top}E+Q$\\
+ 先行研究の結果より，$\forall\omega \in \mathbb{R};\; D^{\top}(j\omega I-A_0^{\top})^{-1}E_0^{\top}E_0(j\omega I-A_0)^{-1}D \leq I$であることが知られている．更に，$E_0(j\omega I-A_0)^{-1}D \rightarrow 0\;(\omega \rightarrow 0)$である．$\therefore\forall\mu \in (0,\,1),\;\exists\omega_0,\;\forall\omega \in (\omega_0,\,\infty];$\\ $\; D^{\top}(j\omega I-A_0^{\top})^{-1}E_0^{\top}E_0(j\omega I-A_0)^{-1}D \leq (1-\mu)I < I$\\
+ 一方，$D$は列フルランクで$Q$は正定なので$\exists\delta > 0,\; \forall \omega \in (\omega_0,\,\infty];\; D^{\top}(j\omega I-A_0^{\top})^{-1}Q(j\omega I-A_0)^{-1}D \geq \delta I$．\\
+$\therefore\forall \omega \in (\omega_0,\,\infty];\;D^{\top}(j\omega I-A_0^{\top})^{-1}E^{\top}E(j\omega I-A_0)^{-1}D \leq I-\delta I < I$．\\
+$\epsilon = min\{\mu,\,\delta\}$として，$\|E(sI-A_0)^{-1}D\|_\infty \leq 1-\epsilon < 1$，すなわち(2.7ii)を得る．
+\end{frame}
+
 \begin{frame}{出力フィードバックによる2次可安定性}
  次に，これまでの結果を使って出力フィードバックによる2次安定化問題の解を与える．次のような線形システムを考える：
   \begin{align}
@@ -140,7 +173,7 @@
    &y(t) = Cx(t) \tag{3.1b} \\
    &{\Delta}A(t){\Delta}B(t) = DF(t)E_{1}E_{2}, \;\|F(t)\| \leq \rho \tag{3.1c}
   \end{align}
- ただし，$x(t) \in \mathbb{R}^n$は状態，$u(t) \in \mathbb{R}^m$は制御入力，$y(t) \in \mathbb{R}^k$は出力である．また，$F(t)$はノルム有界な不確かさを表す行列である．システムの形は(2.1)と同じだが，今回はすべての状態が可則とは限らない．ノミナルシステムは$F(t) = 0$で与えられる．
+ ただし，$x(t) \in \mathbb{R}^n$は状態，$u(t) \in \mathbb{R}^m$は制御入力，$y(t) \in \mathbb{R}^k$は出力である．また，$F(t)$はノルム有界な不確かさを表す行列である．システムの形は(2.1)と同じだが，今回はすべての状態が可測とは限らない．ノミナルシステムは$F(t) = 0$で与えられる．
  \begin{block}{仮定3.2}
   $(A,\;B)$は可安定であり，$(A,\;C)$は可検出である．
  \end{block}
