@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.5-130605-2.6 (utf8.euc) (TeX Live 2015/dev/Debian) (preloaded format=platex 2016.6.15)  24 JUN 2016 14:47
+This is e-pTeX, Version 3.14159265-p3.5-130605-2.6 (jis.euc) (TeX Live 2015/dev/Debian) (preloaded format=platex 2016.6.15)  26 JUN 2016 13:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1126,67 +1126,97 @@ LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 76.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 73.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 76.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 73.
  [3
 
 ]
 LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 87.
+(Font)              scaled to size 11.54663pt on input line 92.
 LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 87.
+(Font)              scaled to size 11.54663pt on input line 92.
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
-(Font)              scaled to size 11.39996pt on input line 87.
+(Font)              scaled to size 11.39996pt on input line 92.
+
+Overfull \vbox (5.42741pt too high) detected at line 92
+ []
 
 [4
 
 ] [5
 
+] [6
+
+] [7
+
 ]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.118 \end{frame}
+l.134 \end{frame}
                  
 ? 
 ! Extra }, or forgotten $.
 \maketag@@@ #1->\hbox {\m@th \normalfont #1}
                                             
-l.118 \end{frame}
+l.134 \end{frame}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.118 \end{frame}
+l.134 \end{frame}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.118 \end{frame}
+l.134 \end{frame}
                  
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.118 \end{frame}
+l.134 \end{frame}
                  
 ? 
 ! Display math should end with $$.
 <to be read again> 
                    \endgroup 
-l.118 \end{frame}
+l.134 \end{frame}
                  
 ? 
-[6
+[8
 
-] [7
+]
 
-] [8
+! Package amsmath Error: Multiple \tag.
 
-] [9
+See the amsmath package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.144 \end{frame}
+                 
+? 
+
+! Package amsmath Error: Multiple \tag.
+
+See the amsmath package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.144 \end{frame}
+                 
+? 
+[9
+
+] [10
+
+] [11
+
+] [12
 
 ]
 \tf@nav=\write6
@@ -1198,20 +1228,20 @@ l.118 \end{frame}
 \tf@snm=\write8
 \openout8 = `h-infinity-control.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 133.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 133.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 166.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 166.
  (./h-infinity-control.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 133.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 133.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 133.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 166.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 166.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 166.
  ) 
 Here is how much of TeX's memory you used:
- 19515 strings out of 493799
- 359980 string characters out of 6153292
- 422693 words of memory out of 5000000
- 22505 multiletter control sequences out of 15000+600000
+ 19521 strings out of 493799
+ 360028 string characters out of 6153292
+ 423693 words of memory out of 5000000
+ 22511 multiletter control sequences out of 15000+600000
  44505 words of font info for 154 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 56i,12n,55p,537b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,12n,55p,631b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on h-infinity-control.dvi (9 pages, 31336 bytes).
+Output written on h-infinity-control.dvi (12 pages, 46036 bytes).
