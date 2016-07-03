@@ -1,0 +1,23 @@
+graph G {
+graph[bgcolor="#00000000"];
+node [shape = point];
+1 -- 2 [color = red];
+2 -- 3 [color = red];
+3 -- 4 [color = red];
+4 -- 5 [color = red];
+5 -- 6 [color = red];
+6 -- 1 [color = blue];
+1 -- 4 [color = blue];
+4 -- 2 [color = blue];
+2 -- 5 [color = blue];
+5 -- 3 [color = blue];
+3 -- 6 [color = green];
+6 -- 4 [color = green];
+6 -- 2 [color = green];
+3 -- 1 [color = green];
+1 -- 5 [color = green];
+{rank = same; 1}
+{rank = same; 2; 6}
+{rank = same; 3; 5}
+{rank = same; 4}
+}
