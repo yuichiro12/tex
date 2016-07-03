@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2016.7.2)  3 JUL 2016 23:29
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2016.7.2)  4 JUL 2016 00:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1149,19 +1149,18 @@ File: graph4.png Graphic file (type bmp)
 (./monthly20160706.toc) [6
 
 ]
+LaTeX Font Info:    Font shape `JT1/hgt/bx/n' will be
+(Font)              scaled to size 11.54663pt on input line 164.
+LaTeX Font Info:    Font shape `JY1/hgt/bx/n' will be
+(Font)              scaled to size 11.54663pt on input line 164.
+LaTeX Font Info:    Font shape `OT1/txss/bx/n' in size <12> not available
+(Font)              Font shape `OT1/txss/b/n' tried instead on input line 164.
+LaTeX Font Info:    Font shape `OT1/txss/b/n' will be
+(Font)              scaled to size 11.39996pt on input line 164.
 File: partitioned-graph.png Graphic file (type bmp)
  <partitioned-graph.png> [7
 
-]
-LaTeX Font Info:    Font shape `JT1/hgt/bx/n' will be
-(Font)              scaled to size 11.54663pt on input line 174.
-LaTeX Font Info:    Font shape `JY1/hgt/bx/n' will be
-(Font)              scaled to size 11.54663pt on input line 174.
-LaTeX Font Info:    Font shape `OT1/txss/bx/n' in size <12> not available
-(Font)              Font shape `OT1/txss/b/n' tried instead on input line 174.
-LaTeX Font Info:    Font shape `OT1/txss/b/n' will be
-(Font)              scaled to size 11.39996pt on input line 174.
- [8
+] [8
 
 ] [9
 
@@ -1174,7 +1173,14 @@ LaTeX Font Info:    Font shape `OT1/txss/b/n' will be
 
 ] [13
 
-] [14
+]
+File: beamericonarticle.pdf Graphic file (type pdf)
+ <beamericonarticle.pdf>
+File: beamericonarticle.pdf Graphic file (type pdf)
+
+<beamericonarticle.pdf> [14
+
+] [15
 
 ]
 \tf@nav=\write6
@@ -1186,22 +1192,22 @@ LaTeX Font Info:    Font shape `OT1/txss/b/n' will be
 \tf@snm=\write8
 \openout8 = `monthly20160706.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 221.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 221.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 228.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 228.
  (./monthly20160706.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 221.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 221.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 228.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 228.
 Package rerunfilecheck Info: File `monthly20160706.out' has not changed.
 (rerunfilecheck)             Checksum: 92681D630185676C4432C60287DA4DD8;134.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 221.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 228.
  ) 
 Here is how much of TeX's memory you used:
- 19765 strings out of 493682
- 367826 string characters out of 6149640
- 430960 words of memory out of 5000000
- 22838 multiletter control sequences out of 15000+600000
+ 19792 strings out of 493682
+ 368679 string characters out of 6149640
+ 430958 words of memory out of 5000000
+ 22864 multiletter control sequences out of 15000+600000
  31662 words of font info for 112 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  56i,12n,63p,512b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on monthly20160706.dvi (14 pages, 70404 bytes).
+Output written on monthly20160706.dvi (15 pages, 73228 bytes).

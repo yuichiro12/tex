@@ -5,40 +5,40 @@
 \usepackage{ascmac}
 \usepackage{bm}
 
-%Beamer$B$N@_Dj(B
+%Beamerの設定
 \usetheme{Boadilla}
-%Beamer$B%U%)%s%H@_Dj(B
-\usepackage{txfonts} % TX$B%U%)%s%H(B
-\usepackage[deluxe]{otf} % $BF|K\8lB?%&%'%$%H2=(B
-\renewcommand{\familydefault}{\sfdefault}  % $B1QJ8$r%5%s%;%j%UBN$K(B
-\renewcommand{\kanjifamilydefault}{\gtdefault}  % $BF|K\8l$r%4%7%C%/BN$K(B
+%Beamerフォント設定
+\usepackage{txfonts} % TXフォント
+\usepackage[deluxe]{otf} % 日本語多ウェイト化
+\renewcommand{\familydefault}{\sfdefault}  % 英文をサンセリフ体に
+\renewcommand{\kanjifamilydefault}{\gtdefault}  % 日本語をゴシック体に
 \usefonttheme{professionalfonts}
-\setbeamerfont{alerted text}{series=\bfseries} % Alert$B$rB@;z(B
-\setbeamerfont{section in toc}{series=\mdseries} % $BL\<!$OB@;z$K$7$J$$(B
-\setbeamerfont{frametitle}{size=\Large} % $B%U%l!<%`%?%$%H%kJ8;z%5%$%:(B
-\setbeamerfont{title}{size=\LARGE} % $B%?%$%H%kJ8;z%5%$%:(B
-\setbeamerfont{date}{size=\small}  % $BF|IUJ8;z%5%$%:(B
+\setbeamerfont{alerted text}{series=\bfseries} % Alertを太字
+\setbeamerfont{section in toc}{series=\mdseries} % 目次は太字にしない
+\setbeamerfont{frametitle}{size=\Large} % フレームタイトル文字サイズ
+\setbeamerfont{title}{size=\LARGE} % タイトル文字サイズ
+\setbeamerfont{date}{size=\small}  % 日付文字サイズ
 
-%Beamer$B?'@_Dj(B
+%Beamer色設定
 \definecolor{UniBlue}{RGB}{0,150,200} 
 \definecolor{AlertOrange}{RGB}{255,76,0}
 \definecolor{AlmostBlack}{RGB}{38,38,38}
-\setbeamercolor{normal text}{fg=AlmostBlack}  % $BK\J8%+%i!<(B
-\setbeamercolor{structure}{fg=UniBlue} % $B8+=P$7%+%i!<(B
-\setbeamercolor{block title}{fg=UniBlue!50!black} % $B%V%m%C%/ItJ,%?%$%H%k%+%i!<(B
-\setbeamercolor{alerted text}{fg=AlertOrange} % \alert $BJ8;z%+%i!<(B
+\setbeamercolor{normal text}{fg=AlmostBlack}  % 本文カラー
+\setbeamercolor{structure}{fg=UniBlue} % 見出しカラー
+\setbeamercolor{block title}{fg=UniBlue!50!black} % ブロック部分タイトルカラー
+\setbeamercolor{alerted text}{fg=AlertOrange} % \alert 文字カラー
 \mode<beamer>{
     \definecolor{BackGroundGray}{RGB}{254,254,254}
-    \setbeamercolor{background canvas}{bg=BackGroundGray} % $B%9%i%$%I%b!<%I$N$_GX7J$r$o$:$+$K%0%l!<$K$9$k(B
+    \setbeamercolor{background canvas}{bg=BackGroundGray} % スライドモードのみ背景をわずかにグレーにする
 }
 
-%$B%U%i%C%H%G%6%$%s2=(B
-\setbeamertemplate{blocks}[rounded] % Block$B$N1F$r>C$9(B
-\useinnertheme{circles} % $B2U>r=q$-$r%7%s%W%k$K(B
-\setbeamertemplate{navigation symbols}{} % $B%J%S%2!<%7%g%s%7%s%\%k$r>C$9(B
-\setbeamertemplate{footline}[frame number] % $B%U%C%?!<$O%9%i%$%IHV9f$N$_(B
+%フラットデザイン化
+\setbeamertemplate{blocks}[rounded] % Blockの影を消す
+\useinnertheme{circles} % 箇条書きをシンプルに
+\setbeamertemplate{navigation symbols}{} % ナビゲーションシンボルを消す
+\setbeamertemplate{footline}[frame number] % フッターはスライド番号のみ
 
-%$B%?%$%H%k%Z!<%8(B
+%タイトルページ
 \setbeamertemplate{title page}{%
     \vspace{2.5em}
     {\usebeamerfont{title} \usebeamercolor[fg]{title} \inserttitle \par}
@@ -60,10 +60,10 @@
 \def\qed{\hfill $\Box$}
 
 \AtBeginSection[]{
-    \frame{\tableofcontents[currentsection, hideallsubsections]} %$BL\<!%9%i%$%I(B
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
 }
 
-%$B%?%$%H%k(B
+%タイトル
 \title{Monthly Meeting on July}
 \author{\textbf{Yuichiro Honda}}
 \date{2016/07/06}
@@ -152,10 +152,10 @@
 \end{frame}
 
 \section{Progress}
-\begin{frame}{ON DISJOINT COMMON BASES IN TWO MATROIDS}
- \begin{block}{problem 1}
+\begin{frame}{On Disjoint Common Bases in Two Matroids}
+ \begin{alertblock}{problem 1}
   Let $M_1 = (S, \mathcal{I}_1)$ and $M_2 = (S, \mathcal{I}_2)$ be matroids on the ground set $S$, where $\mathcal{I}_1$ and $\mathcal{I}_2$ are the respective families of independent sets. A set $B \subseteqq S$ that is both a base of $M_1$ and $M_2$ is called a common base. The problem is to decide whether $S$ can be partitioned into common bases.
- \end{block}
+ \end{alertblock}
  \begin{figure}
   \centering
   \includegraphics[width=2cm]{partitioned-graph.png}
@@ -163,7 +163,7 @@
  \end{figure}
 \end{frame}
 
-\begin{frame}{ON DISJOINT COMMON BASES IN TWO MATROIDS}
+\begin{frame}{On Disjoint Common Bases in Two Matroids}
  \begin{alertblock}{conjecture 2 (Rota's conjecture)}
   Let $M = (T, \mathcal{I})$ be a matroid of rank $n$. Let $A_1 , ..., A_n$ be a partition of $T$ into bases of $M$. Then there are disjoint bases $B_1 , ..., B_n$ such that $|A_i \cap B_j| = 1$ for every $i = 1, ..., n$ and $j = 1, ..., n$.
  \end{alertblock}
@@ -173,7 +173,7 @@
  \end{alertblock}
 \end{frame}
 
-\begin{frame}{ON DISJOINT COMMON BASES IN TWO MATROIDS}
+\begin{frame}{On Disjoint Common Bases in Two Matroids}
  \begin{block}{theorem 4}
   Problem 1 can be solved in polynomial time if and only if this is under the additional assumption that one of the matroids is a direct sum of uniform matroids.
  \end{block}
@@ -187,7 +187,7 @@
  \end{block}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{On Disjoint Common Bases in Two Matroids}
  \begin{exampleblock}{uniform matroid}
   Let $U = (S, \mathcal{I})$ be a matroid where $\mathcal{I} \in 2^S$ satisfies:
   \begin{align*}
@@ -197,7 +197,7 @@
  \end{exampleblock}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{On Disjoint Common Bases in Two Matroids}
  \begin{block}{claim 5}
   Conjecture 3 is false for every b such that $2 \leq b \leq \frac{n}{3}$.
  \end{block}
@@ -211,6 +211,13 @@
  Yet these methods show that Chow's conjecture is false when $3 \leq b \leq \frac{n}{3}$, Rota's conjecture is still alive since it's Chow's conjecture in the case of $b = n$. There's still room for research about Chow's conjecture. \\
  Also, computational complexity of problem 1 is still open. This paper gives neccesary and sufficient condition to solve problem 1 in polynomial time only when problem 1 can be solved. It's yet to be discovered exactly when problem 1 can be solved. \\
  What I'm going to do next month is to think about these problems.
+\end{frame}
+
+\begin{frame}{References}
+ \begin{thebibliography}{9}
+  \bibitem{1}
+	 \small{Nicholas J. A. Harvey, Tamas Kiraly, and Lap Chi Lau: ``On Disjoint Common Bases in Two Matroids'', SIDMA. Vol. 25, No. 4. pp. 1792-1803}
+ \end{thebibliography}
 \end{frame}
 
 \begin{frame}
