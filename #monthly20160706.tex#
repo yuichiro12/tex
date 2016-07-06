@@ -217,7 +217,7 @@
  \begin{block}{claim 7}
   The common bases of $M$ and $U_1(\hat{\mathcal{S}})$ are precisely the subsets $B \subseteqq S \cup S^{[k]}$ satisfying
   \begin{align*}
-   |B \cap \hat{s}| = 1\; \forall s \in S \text{ and } B \cap S \text{ is a common base of }M_1 \text{ and } M_2
+   |B \cup \hat{s}| = 1\; \forall s \in S \text{ and } B \cup S \text{ is a common base of }M_1 \text{ and } M_2
   \end{align*}
  \end{block}
  \begin{block}{corollary 8}
@@ -236,7 +236,7 @@
   \centering
   \includegraphics[width=10cm]{partition.png}
  \end{figure}
- then let $B'_j := B_j \cup C_j$,  $B'_j$ will be a partition of $S \cup S^{[k]}$.
+ then let $B'_j := B_j \cap C_j$,  $B'_j$ will be a partition of $S \cup S^{[k]}$.
 \end{frame}
 
 \begin{frame}{On Disjoint Common Bases in Two Matroids}
