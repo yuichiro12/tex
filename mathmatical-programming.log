@@ -1,9 +1,9 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2016.7.2)  20 JUL 2016 02:37
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2016.7.2)  20 JUL 2016 03:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**荐^^88�^^94紙^^83^^85�^^a0掩^^95亥^^90^^86.tex
-(./荐^^88�^^94紙^^83^^85�^^a0掩^^95亥^^90^^86.tex
+**mathmatical-programming.tex
+(./mathmatical-programming.tex
 pLaTeX2e <2016/06/10>+1 (based on LaTeX2e <2016/03/31> patch level 2)
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (/usr/local/texlive/2016/texmf-dist/tex/platex/base/jarticle.cls
@@ -179,6 +179,31 @@ Package: tascmac 2016/04/15 v2.0b ascmac package (community edition)
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup8
 )
+(/usr/local/texlive/2016/texmf-dist/tex/platex/japanese-otf-uptex/otf.sty
+Package: otf 2013/11/17 v1.7b6 psitau, u0.17 ttk
+LaTeX Font Info:    Redeclaring symbol font `mincho' on input line 279.
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `normal'
+(Font)                  JY1/mc/m/n --> JY1/hmc/m/n on input line 279.
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
+(Font)                  JY1/gt/m/n --> JY1/hmc/m/n on input line 279.
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
+(Font)                  JY1/hmc/m/n --> JY1/hmc/bx/n on input line 281.
+LaTeX Font Info:    Redeclaring math alphabet \mathgt on input line 282.
+LaTeX Font Info:    Overwriting math alphabet `\mathgt' in version `normal'
+(Font)                  JY1/gt/m/n --> JY1/hgt/m/n on input line 282.
+LaTeX Font Info:    Overwriting math alphabet `\mathgt' in version `bold'
+(Font)                  JY1/gt/m/n --> JY1/hgt/m/n on input line 282.
+LaTeX Font Info:    Overwriting math alphabet `\mathgt' in version `bold'
+(Font)                  JY1/hgt/m/n --> JY1/hgt/bx/n on input line 283.
+
+(/usr/local/texlive/2016/texmf-dist/tex/platex/japanese-otf/ajmacros.sty
+Package: ajmacros 2005/12/25 13:52 iNOUE Koich! <inoue@ma.ns.musashi-tech.ac.jp
+>
+\@tempcntc=\count106
+\@tempcntd=\count107
+\@tempcnte=\count108
+\@tempcntf=\count109
+))
 (/usr/local/texlive/2016/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
@@ -192,9 +217,9 @@ Package ifvtex Info: VTeX not detected.
 (/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count106
-\Gm@cntv=\count107
-\c@Gm@tempcnt=\count108
+\Gm@cnth=\count110
+\Gm@cntv=\count111
+\c@Gm@tempcnt=\count112
 \Gm@bindingoffset=\dimen139
 \Gm@wd@mp=\dimen140
 \Gm@odd@mp=\dimen141
@@ -211,7 +236,7 @@ nment
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count109
+\c@float@type=\count113
 \float@exts=\toks27
 \float@box=\box52
 \@float@everytoks=\toks28
@@ -221,7 +246,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks29
-\c@algorithm=\count110
+\c@algorithm=\count114
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
@@ -230,51 +255,55 @@ Package: algpseudocode
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count111
-\c@ALG@rem=\count112
-\c@ALG@nested=\count113
+\c@ALG@line=\count115
+\c@ALG@rem=\count116
+\c@ALG@nested=\count117
 \ALG@tlm=\skip46
 \ALG@thistlm=\skip47
-\c@ALG@Lnr=\count114
-\c@ALG@blocknr=\count115
-\c@ALG@storecount=\count116
-\c@ALG@tmpcounter=\count117
+\c@ALG@Lnr=\count118
+\c@ALG@blocknr=\count119
+\c@ALG@storecount=\count120
+\c@ALG@tmpcounter=\count121
 \ALG@tmplength=\skip48
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 )
-\c@fact=\count118
-\c@lemma=\count119
-\c@assumption=\count120
-\c@condition=\count121
-\c@proof=\count122
-\c@theorem=\count123
-\c@proposition=\count124
-\c@corollary=\count125
-\c@definition=\count126
-\c@remark=\count127
-\c@problem=\count128
-\c@example=\count129
-\c@defmark=\count130
- (./荐^^88�^^94紙^^83^^85�^^a0掩^^95亥^^90^^86.aux)
-\openout1 = `荐^^88�^^94紙^^83^^85�^^a0掩^^95亥^^90^^86.aux'.
+\c@fact=\count122
+\c@lemma=\count123
+\c@assumption=\count124
+\c@condition=\count125
+\c@proof=\count126
+\c@theorem=\count127
+\c@proposition=\count128
+\c@corollary=\count129
+\c@definition=\count130
+\c@remark=\count131
+\c@problem=\count132
+\c@example=\count133
+\c@defmark=\count134
+ (./mathmatical-programming.aux)
+\openout1 = `mathmatical-programming.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
+(Font)              scaled to size 9.6222pt on input line 102.
+LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
+(Font)              scaled to size 9.6222pt on input line 102.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
@@ -310,50 +339,90 @@ LaTeX Font Info:    ... okay on input line 101.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <17.28> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 103.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 103.
-LaTeX Font Info:    Try loading font information for U+msa on input line 103.
+LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
+(Font)              scaled to size 16.62714pt on input line 104.
+LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
+(Font)              scaled to size 16.62714pt on input line 104.
+LaTeX Font Info:    Font shape `JT1/hmc/bx/n' in size <17.28> not available
+(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 104.
+LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
+(Font)              scaled to size 16.62714pt on input line 104.
+LaTeX Font Info:    Font shape `JY1/hmc/bx/n' in size <17.28> not available
+(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 104.
+LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
+(Font)              scaled to size 16.62714pt on input line 104.
+LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 104.
+LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 104.
+LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
+(Font)              scaled to size 7.69775pt on input line 104.
+LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
+(Font)              scaled to size 5.77332pt on input line 104.
+LaTeX Font Info:    Try loading font information for U+msa on input line 104.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 103.
+LaTeX Font Info:    Try loading font information for U+msb on input line 104.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 103.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 104.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 103.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 104.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
 ]
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 106.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 106.
+LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
+(Font)              scaled to size 13.85594pt on input line 107.
+LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
+(Font)              scaled to size 13.85594pt on input line 107.
+LaTeX Font Info:    Font shape `JT1/hmc/bx/n' in size <14.4> not available
+(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 107.
+LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
+(Font)              scaled to size 13.85594pt on input line 107.
+LaTeX Font Info:    Font shape `JY1/hmc/bx/n' in size <14.4> not available
+(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 107.
+LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
+(Font)              scaled to size 13.85594pt on input line 107.
+LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
+(Font)              scaled to size 6.73553pt on input line 108.
+LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
+(Font)              scaled to size 4.8111pt on input line 108.
+LaTeX Font Info:    Font shape `JY1/hmc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 108.
+LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
+(Font)              scaled to size 9.6222pt on input line 108.
+LaTeX Font Info:    Font shape `JY1/hmc/bx/n' in size <7> not available
+(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 108.
+LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
+(Font)              scaled to size 6.73553pt on input line 108.
+LaTeX Font Info:    Font shape `JY1/hmc/bx/n' in size <5> not available
+(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 108.
+LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
+(Font)              scaled to size 4.8111pt on input line 108.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 107.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 108.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 107.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 109.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 109.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 108.
+LaTeX Font Info:    Font shape `JT1/hmc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 110.
+LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
+(Font)              scaled to size 9.6222pt on input line 110.
  [2]
 File: smallest-circle-init2.png Graphic file (type bmp)
 
 <smallest-circle-init2.png>
 File: smallest-circle-output2.png Graphic file (type bmp)
  <smallest-circle-output2.png>
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 154--162
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 155--163
 [][]$[]$[] []$[]$[] 
  []
 
@@ -361,7 +430,7 @@ File: smallest-circle-init.png Graphic file (type bmp)
 <smallest-circle-init.png>
 File: smallest-circle-output.png Graphic file (type bmp)
  <smallest-circle-output.png>
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 164--172
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 165--173
 [][]$[]$[] []$[]$[] 
  []
 
@@ -370,7 +439,7 @@ File: smallest-circle-init2.png Graphic file (type bmp)
  <smallest-circle-init2.png>
 File: smallest-circle-output2.png Graphic file (type bmp)
  <smallest-circle-output2.png>
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 193--201
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 194--202
 [][]$[]$[] []$[]$[] 
  []
 
@@ -378,19 +447,18 @@ File: smallest-circle-init2.png Graphic file (type bmp)
 <smallest-circle-init2.png>
 File: smallest-circle-output2.png Graphic file (type bmp)
  <smallest-circle-output2.png>
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 203--211
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 204--212
 [][]$[]$[] []$[]$[] 
  []
 
-[4] [5] (./荐^^88�^^94紙^^83^^85�^^a0掩^^95亥^^90^^86.aux) ) 
+[4] [5] (./mathmatical-programming.aux) ) 
 Here is how much of TeX's memory you used:
- 3311 strings out of 493682
- 43354 string characters out of 6149640
- 115686 words of memory out of 5000000
- 6801 multiletter control sequences out of 15000+600000
- 22050 words of font info for 94 fonts, out of 8000000 for 9000
+ 5013 strings out of 493682
+ 63621 string characters out of 6149640
+ 137711 words of memory out of 5000000
+ 8493 multiletter control sequences out of 15000+600000
+ 21670 words of font info for 104 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 27i,8n,26p,551b,335s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,8n,26p,556b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 荐^^88�^^94紙^^83^^85�^^a0掩^^95亥^^90^^86.dvi (5 pages, 1048
-4 bytes).
+Output written on mathmatical-programming.dvi (5 pages, 10436 bytes).
