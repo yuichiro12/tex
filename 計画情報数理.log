@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2016.7.2)  19 JUL 2016 17:01
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2016.7.2)  20 JUL 2016 02:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -120,11 +120,18 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: dvips.def on input line 99.
+Package graphics Info: Driver file: dvipdfmx.def on input line 99.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/dvips.def
-File: dvips.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
-))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/dvipdfmx-def/dvipdfmx.def
+File: dvipdfmx.def 2016/06/22 v4.09 LaTeX color/graphics driver for dvipdfmx (T
+eX Live/ChoF)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
 \Gin@req@height=\dimen130
 \Gin@req@width=\dimen131
 )
@@ -333,23 +340,57 @@ LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 106.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 110.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 107.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 110.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 107.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 114.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 109.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 114.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 109.
  [2]
-[3] (./荐^^88�^^94紙^^83^^85�^^a0掩^^95亥^^90^^86.aux) ) 
+File: smallest-circle-init2.png Graphic file (type bmp)
+
+<smallest-circle-init2.png>
+File: smallest-circle-output2.png Graphic file (type bmp)
+ <smallest-circle-output2.png>
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 154--162
+[][]$[]$[] []$[]$[] 
+ []
+
+File: smallest-circle-init.png Graphic file (type bmp)
+<smallest-circle-init.png>
+File: smallest-circle-output.png Graphic file (type bmp)
+ <smallest-circle-output.png>
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 164--172
+[][]$[]$[] []$[]$[] 
+ []
+
+[3]
+File: smallest-circle-init2.png Graphic file (type bmp)
+ <smallest-circle-init2.png>
+File: smallest-circle-output2.png Graphic file (type bmp)
+ <smallest-circle-output2.png>
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 193--201
+[][]$[]$[] []$[]$[] 
+ []
+
+File: smallest-circle-init2.png Graphic file (type bmp)
+<smallest-circle-init2.png>
+File: smallest-circle-output2.png Graphic file (type bmp)
+ <smallest-circle-output2.png>
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 203--211
+[][]$[]$[] []$[]$[] 
+ []
+
+[4] [5] (./荐^^88�^^94紙^^83^^85�^^a0掩^^95亥^^90^^86.aux) ) 
 Here is how much of TeX's memory you used:
- 3090 strings out of 493682
- 39683 string characters out of 6149640
- 111691 words of memory out of 5000000
- 6597 multiletter control sequences out of 15000+600000
+ 3311 strings out of 493682
+ 43354 string characters out of 6149640
+ 115686 words of memory out of 5000000
+ 6801 multiletter control sequences out of 15000+600000
  22050 words of font info for 94 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 27i,8n,26p,264b,296s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,8n,26p,551b,335s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 荐^^88�^^94紙^^83^^85�^^a0掩^^95亥^^90^^86.dvi (3 pages, 4816
- bytes).
+Output written on 荐^^88�^^94紙^^83^^85�^^a0掩^^95亥^^90^^86.dvi (5 pages, 1048
+4 bytes).
