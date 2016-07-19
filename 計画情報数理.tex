@@ -10,7 +10,8 @@
 \usepackage{ascmac}
 \usepackage{mathrsfs}
 \usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
-\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 %\usepackage{arydshln}
 %\usepackage{manyeqns}
 %\usepackage{jconference}
@@ -109,28 +110,28 @@ $\displaystyle\tabskip\z@{##}$&\global\@eqcnt\@ne
  \v{d}_k = -\nabla f(\v{x}_k)
 \]
 この式で与えられる移動方向$\v{d}_k$は，勾配ベクトルとの内積が常に負になることから，関数の減少する移動方向であることが保証される．また，移動のステップ幅を与えるのには次のArmijoの方法を用いた．
-\begin{align*}
- \text{while  } &f(\v{x}_k + \alpha_k\v{d}_k) > \tau\alpha_k\nabla f(\v{x}_k)^{\top}\v{d}_k \text{  do}\\
- &\alpha_{k+1} := \beta\alpha_k \\
- &k := k + 1 \\
- \text{   end while}
-\end{align*}
-\begin{algorithmic}[1]
- \While{$f(\v{x}_k + \alpha_k\v{d}_k) > \tau\alpha_k\nabla f(\v{x}_k)^{\top}\v{d}_k$}
-    $\alpha_{k+1} := \beta\alpha_k$
-    $k := k + 1$
- \EndWhile
-\end{algorithmic}
+\begin{algorithm}
+ \caption{Armijoの方法}         
+ \label{alg1}    
+  \begin{algorithmic}
+   \While{$f(\v{x}_k + \alpha_k\v{d}_k) > \tau\alpha_k\nabla f(\v{x}_k)^{\top}\v{d}_k$}
+   \State{$\alpha_{k+1} := \beta\alpha_k$}
+   \State{$k := k + 1$}
+   \EndWhile
+  \end{algorithmic}
+\end{algorithm}
 \newpage
 \section{最小包囲円問題}
 最小包囲円問題の定式化は次の式による．
 \begin{align*}
  min \hspace{15pt} &r^2 \\
- s.t. \hspace{15pt} &(x - x_i)^2 + (y - y_i) \leq r^2,\,i = 1, ..., n \\
+ s.t. \hspace{15pt} &(x - x_i)^2 + (y - y_i)^2 \leq r^2,\,i = 1, ..., n \\
  &r \geq 0
 \end{align*}
 この問題は制約付き問題なので，このままでは直線探索法が適用できない．そのため，次のようにして制約条件をペナルティに変換したものを新たな目的関数として，無制約問題を作る（$\rho$はペナルティの重みである）
-
+\begin{align*}
+ min \hspace{15pt} &r^2 + \rho\sum_{i = 1}^{n}max\{0, (x - x_i)^2 + (y - y_i)^2 - r^2\}
+\end{align*}
 \section{円詰め込み問題}
 円詰め込み問題の定式化は次の式による．
 \begin{align*}
@@ -142,7 +143,7 @@ $\displaystyle\tabskip\z@{##}$&\global\@eqcnt\@ne
 この問題もやはり制約付き問題なので，直線探索法が適用できない．そのため，次のようにして制約条件をペナルティに変換したものを新たな目的関数として，無制約問題を作る（$\rho$はペナルティの重みである）
 \begin{align*}
  min \hspace{15pt} r &+ \rho\sum_{i = 1}^{n} \sum_{j = i + 1}^{n}max\{0, (r_i - r_j)^2 - (x_i - x_j)^2 - (y_i - y_j)^2\} \\
- &+ \sum_{i = 1}^{n}max\{0, x_i^2 + y_i^2 - (r - r_i)^2\} \\
+ &+ \rho\sum_{i = 1}^{n}max\{0, x_i^2 + y_i^2 - (r - r_i)^2\} \\
  &+ \rho\,max\{0, max\{r_i\,|\,\,i = 1, ..., n\} - r\} 
 \end{align*}
 \end{document}
