@@ -1,0 +1,148 @@
+%!TEX encoding = UTF-8 unicode
+\documentclass[10pt,a4paper]{jarticle}
+
+\def\baselinestretch{1.0} % 改行幅を調整したいときはここの数字を変更
+
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage[dvips]{graphicx}
+\usepackage{psfrag}
+\usepackage{fancybox}
+\usepackage{ascmac}
+\usepackage{mathrsfs}
+\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
+\usepackage[noend]{algpseudocode}
+%\usepackage{arydshln}
+%\usepackage{manyeqns}
+%\usepackage{jconference}
+%\usepackage{epsf}
+
+\setlength{\oddsidemargin}{-30pt}
+\setlength{\topmargin}{-40pt}
+\setlength{\headheight}{0pt}%0
+%\setlength{\footheight}{10pt}
+\setlength{\textwidth}{18cm}%18cm
+\setlength{\textheight}{25cm}%25cm
+\setlength{\columnsep}{20pt}%20pt
+
+\newtheorem{fact}{事実}
+\newtheorem{lemma}{補題}%[section]
+\newtheorem{assumption}{仮定}
+\newtheorem{condition}{条件}
+\newtheorem{proof}{証明}
+\newtheorem{theorem}{定理}%[section]
+\newtheorem{proposition}{命題}
+\newtheorem{corollary}{系}
+\newtheorem{definition}{定義}
+\newtheorem{remark}{注意}
+\newtheorem{problem}{問題}
+\newtheorem{example}{例}
+\newtheorem{defmark}{記号の定義}
+
+\def\rank{\mathop{\rm rank}}
+\def\Re{\mathop{\rm Re}}
+\def\Im{\mathop{\rm Im}}
+\def\N{\mathbb{N}}
+\def\diag{\mathop{\rm diag}}
+\def\blockdiag{\mathop{\rm block\ diag}}
+\def\bedr{\hfill $\Box$}
+\def\trace{\mathop{\rm tr}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+\def\T{\mathop{\rm T}}
+\def\H{\mathop{\rm H}}
+\def\elig{{\rm Elig}}
+\def\wx{\widetilde x}
+\def\Vec#1{\mbox{\boldmath $#1$}}
+\def\v#1{\mbox{\boldmath $#1$}}
+\def\defspace{$\vspace*{0.5mm}$}
+\def\E{\mathop{\rm E}}
+
+
+\makeatletter 
+
+\def\eqnarray{
+\stepcounter{equation}
+\let\@currentlabel=\theequation 
+\global\@eqnswtrue 
+\global\@eqcnt\z@ 
+\tabskip\@centering 
+\let\\=\@eqncr 
+$$\halign to \displaywidth\bgroup\@eqnsel\hskip\@centering 
+$\displaystyle\tabskip\z@{##}$&\global\@eqcnt\@ne 
+\hfil$\displaystyle{{}##{}}$\hfil 
+&\global\@eqcnt\tw@$\displaystyle\tabskip\z@{##}$\hfil 
+\tabskip\@centering&\llap{##}\tabskip\z@\cr} 
+
+%%% 数式番号を(節番.式番)と表示させたいときは
+%%% 下の2行のコメントを外す
+%\def\theequation{\thesection.\arabic{equation}} 
+%\@addtoreset{equation}{section}
+
+%%% 図の番号を(節番.図番)と表示させたいときは
+%%% 下の2行のコメントを外す
+%\def\thefigure{\thesection.\arabic{figure}}
+%\@addtoreset{figure}{section}
+
+
+
+%\renewcommand{\theenumi}{\roman{enumi}}
+
+%%% 脚注の記号を変更
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+\title{\bf 計画情報数理レポート課題}
+\author{森田研究室 M1 本田雄一郎}
+\date{2016年7月19日}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\pagestyle{plain}
+\maketitle
+
+\newpage
+\section{はじめに}
+最小包囲円問題，円詰め込み問題を勾配法で解くにあたって，今回は最急降下法を利用した．
+最急降下法の各反復での移動方向は次の式で与えられる．
+\[
+ \v{d}_k = -\nabla f(\v{x}_k)
+\]
+この式で与えられる移動方向$\v{d}_k$は，勾配ベクトルとの内積が常に負になることから，関数の減少する移動方向であることが保証される．また，移動のステップ幅を与えるのには次のArmijoの方法を用いた．
+\begin{align*}
+ \text{while  } &f(\v{x}_k + \alpha_k\v{d}_k) > \tau\alpha_k\nabla f(\v{x}_k)^{\top}\v{d}_k \text{  do}\\
+ &\alpha_{k+1} := \beta\alpha_k \\
+ &k := k + 1 \\
+ \text{   end while}
+\end{align*}
+\begin{algorithmic}[1]
+ \While{$f(\v{x}_k + \alpha_k\v{d}_k) > \tau\alpha_k\nabla f(\v{x}_k)^{\top}\v{d}_k$}
+    $\alpha_{k+1} := \beta\alpha_k$
+    $k := k + 1$
+ \EndWhile
+\end{algorithmic}
+\newpage
+\section{最小包囲円問題}
+最小包囲円問題の定式化は次の式による．
+\begin{align*}
+ min \hspace{15pt} &r^2 \\
+ s.t. \hspace{15pt} &(x - x_i)^2 + (y - y_i) \leq r^2,\,i = 1, ..., n \\
+ &r \geq 0
+\end{align*}
+この問題は制約付き問題なので，このままでは直線探索法が適用できない．そのため，次のようにして制約条件をペナルティに変換したものを新たな目的関数として，無制約問題を作る（$\rho$はペナルティの重みである）
+
+\section{円詰め込み問題}
+円詰め込み問題の定式化は次の式による．
+\begin{align*}
+ min \hspace{15pt} &r \\
+ s.t. \hspace{15pt} &(x_i - x_j)^2 + (y_i - y_j)^2 \leq (r_i + r_j)^2\,\,(i \neq j,\,i, j = 1, ..., n) \\
+ &x_i^2 + y_i^2 \leq (r - r_i)^2 \\
+ &r \geq max\{r_i\,|\,i = 1, ..., n\}
+\end{align*}
+この問題もやはり制約付き問題なので，直線探索法が適用できない．そのため，次のようにして制約条件をペナルティに変換したものを新たな目的関数として，無制約問題を作る（$\rho$はペナルティの重みである）
+\begin{align*}
+ min \hspace{15pt} r &+ \rho\sum_{i = 1}^{n} \sum_{j = i + 1}^{n}max\{0, (r_i - r_j)^2 - (x_i - x_j)^2 - (y_i - y_j)^2\} \\
+ &+ \sum_{i = 1}^{n}max\{0, x_i^2 + y_i^2 - (r - r_i)^2\} \\
+ &+ \rho\,max\{0, max\{r_i\,|\,\,i = 1, ..., n\} - r\} 
+\end{align*}
+\end{document}
