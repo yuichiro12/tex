@@ -134,7 +134,7 @@ $\displaystyle\tabskip\z@{##}$&\global\@eqcnt\@ne
 \end{algorithm}
 
 なお，言うまでもないことだが，勾配法を利用する際，問題に制約条件が付いている場合には，問題の目的関数にそのまま勾配法を適用できないことに注意すべきである．そのまま適用した場合，制約条件に違反してしまうおそれがあるからである．このような場合，制約条件の違反度をペナルティとして目的関数に加えた緩和問題を新たな目的関数にするなどの一手間が必要である．\\
-また，実行速度を上げるために工夫した点として，Armijoの方法で$\alpha$を求める際に，1つ前の反復で求めた$\alpha$を渡し，それを$\alpha$の初期値とした．これにより実行速度を15倍程度改善することができた．
+また，実行速度を上げるために工夫した点として，Armijoの方法で$\alpha$を求める際に，1つ前の反復で求めた$\alpha$を渡し，それを各ステップでの$\alpha$の初期値とした．これにより実行速度を15倍程度改善することができた．
 
 
 \newpage
@@ -153,21 +153,21 @@ $\displaystyle\tabskip\z@{##}$&\global\@eqcnt\@ne
 実行結果:
 \begin{figure}[ht]
  \begin{minipage}{0.5\hsize}
-  \includegraphics[width=7cm]{smallest-circle-init2.png}
+  \includegraphics[width=6.5cm]{smallest-circle-init2.png}
   \caption{最小包囲円(n = 20, 初期状態)}
  \end{minipage}
  \begin{minipage}{0.5\hsize}
-  \includegraphics[width=7cm]{smallest-circle-output2.png}
+  \includegraphics[width=6.5cm]{smallest-circle-output2.png}
   \caption{最小包囲円(n = 20, 出力)}
  \end{minipage}
 \end{figure}
 \begin{figure}[ht]
  \begin{minipage}{0.5\hsize}
-  \includegraphics[width=7cm]{smallest-circle-init.png}
+  \includegraphics[width=6.5cm]{smallest-circle-init.png}
   \caption{最小包囲円(n = 100, 初期状態)}
  \end{minipage}
  \begin{minipage}{0.5\hsize}
-  \includegraphics[width=7cm]{smallest-circle-output.png}
+  \includegraphics[width=6.5cm]{smallest-circle-output.png}
   \caption{最小包囲円(n = 100, 出力)}
  \end{minipage}
 \end{figure}
@@ -184,29 +184,28 @@ $\displaystyle\tabskip\z@{##}$&\global\@eqcnt\@ne
 \end{align*}
 この問題もやはり制約付き問題なので，直線探索法が適用できない．そのため，次のようにして制約条件をペナルティに変換したものを新たな目的関数として，無制約問題を作る（$\rho$はペナルティの重みである）
 \begin{align*}
- min \hspace{15pt} r &+ \rho\sum_{i = 1}^{n} \sum_{j = i + 1}^{n}max\{0, (r_i - r_j)^2 - (x_i - x_j)^2 - (y_i - y_j)^2\} \\
- &+ \rho\sum_{i = 1}^{n}max\{0, x_i^2 + y_i^2 - (r - r_i)^2\} \\
- &+ \rho\,max\{0, max\{r_i\,|\,\,i = 1, ..., n\} - r\} 
+ min \hspace{15pt} r &+ \rho\sum_{i = 1}^{n} \sum_{j = i + 1}^{n}max\{0, (r_i + r_j)^2 - (x_i - x_j)^2 - (y_i - y_j)^2\} \\
+ &+ \rho\sum_{i = 1}^{n}max\{0, x_i^2 + y_i^2 - (r - r_i)^2\} + \rho\,max\{0, max\{r_i\,|\,\,i = 1, ..., n\} - r\} 
 \end{align*}
 
 実行結果:
 \begin{figure}[ht]
  \begin{minipage}{0.5\hsize}
-  \includegraphics[width=7cm]{smallest-circle-init2.png}
+  \includegraphics[width=6.5cm]{circle-packing-init.png}
   \caption{円詰め込み(n = 20, 初期状態)}
  \end{minipage}
  \begin{minipage}{0.5\hsize}
-  \includegraphics[width=7cm]{smallest-circle-output2.png}
+  \includegraphics[width=6.5cm]{circle-packing-output.png}
   \caption{円詰め込み(n = 20, 出力)}
  \end{minipage}
 \end{figure}
 \begin{figure}[ht]
  \begin{minipage}{0.5\hsize}
-  \includegraphics[width=7cm]{smallest-circle-init2.png}
+  \includegraphics[width=6.5cm]{circle-packing-init.png}
   \caption{円詰め込み(n = 100, 初期状態)}
  \end{minipage}
  \begin{minipage}{0.5\hsize}
-  \includegraphics[width=7cm]{smallest-circle-output2.png}
+  \includegraphics[width=6.5cm]{circle-packing-output.png}
   \caption{円詰め込み(n = 100, 出力)}
  \end{minipage}
 \end{figure}
