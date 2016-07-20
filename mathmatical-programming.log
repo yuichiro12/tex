@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2016.7.2)  20 JUL 2016 14:49
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2016.7.2)  21 JUL 2016 02:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -422,7 +422,7 @@ File: smallest-circle-init2.png Graphic file (type bmp)
 <smallest-circle-init2.png>
 File: smallest-circle-output2.png Graphic file (type bmp)
  <smallest-circle-output2.png>
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 155--163
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 171--179
 [][]$[]$[] []$[]$[] 
  []
 
@@ -430,7 +430,7 @@ File: smallest-circle-init.png Graphic file (type bmp)
 <smallest-circle-init.png>
 File: smallest-circle-output.png Graphic file (type bmp)
  <smallest-circle-output.png>
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 165--173
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 181--189
 [][]$[]$[] []$[]$[] 
  []
 
@@ -439,26 +439,26 @@ File: circle-packing-init.png Graphic file (type bmp)
  <circle-packing-init.png>
 File: circle-packing-output.png Graphic file (type bmp)
  <circle-packing-output.png>
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 193--201
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 209--217
 [][]$[]$[] []$[]$[] 
  []
 
-File: circle-packing-init.png Graphic file (type bmp)
-<circle-packing-init.png>
-File: circle-packing-output.png Graphic file (type bmp)
- <circle-packing-output.png>
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 203--211
+File: circle-packing-init2.png Graphic file (type bmp)
+<circle-packing-init2.png>
+File: circle-packing-output2.png Graphic file (type bmp)
+ <circle-packing-output2.png>
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 219--227
 [][]$[]$[] []$[]$[] 
  []
 
 [4] [5] (./mathmatical-programming.aux) ) 
 Here is how much of TeX's memory you used:
- 5021 strings out of 493682
- 63873 string characters out of 6149640
- 137711 words of memory out of 5000000
- 8497 multiletter control sequences out of 15000+600000
+ 5029 strings out of 493682
+ 64133 string characters out of 6149640
+ 138711 words of memory out of 5000000
+ 8501 multiletter control sequences out of 15000+600000
  21670 words of font info for 104 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 27i,8n,26p,556b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,10n,26p,559b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on mathmatical-programming.dvi (5 pages, 10424 bytes).
+Output written on mathmatical-programming.dvi (5 pages, 12636 bytes).
