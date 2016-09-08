@@ -1,0 +1,174 @@
+%!TEX platex=1
+\documentclass[11pt,xcolor=dvipsnames,table,dvipdfmx]{beamer}
+\usepackage{amsmath, amssymb}
+\usepackage{latexsym}
+\usepackage{ascmac}
+\usepackage{bm}
+
+%Beamerの設定
+\usetheme{Boadilla}
+%Beamerフォント設定
+\usepackage{txfonts} % TXフォント
+\usepackage[deluxe]{otf} % 日本語多ウェイト化
+\renewcommand{\familydefault}{\sfdefault}  % 英文をサンセリフ体に
+\renewcommand{\kanjifamilydefault}{\gtdefault}  % 日本語をゴシック体に
+\usefonttheme{professionalfonts}
+\setbeamerfont{alerted text}{series=\bfseries} % Alertを太字
+\setbeamerfont{section in toc}{series=\mdseries} % 目次は太字にしない
+\setbeamerfont{frametitle}{size=\Large} % フレームタイトル文字サイズ
+\setbeamerfont{title}{size=\LARGE} % タイトル文字サイズ
+\setbeamerfont{date}{size=\small}  % 日付文字サイズ
+
+%Beamer色設定
+\definecolor{UniBlue}{RGB}{0,150,200} 
+\definecolor{AlertOrange}{RGB}{255,76,0}
+\definecolor{AlmostBlack}{RGB}{38,38,38}
+\setbeamercolor{normal text}{fg=AlmostBlack}  % 本文カラー
+\setbeamercolor{structure}{fg=UniBlue} % 見出しカラー
+\setbeamercolor{block title}{fg=UniBlue!50!black} % ブロック部分タイトルカラー
+\setbeamercolor{alerted text}{fg=AlertOrange} % \alert 文字カラー
+\mode<beamer>{
+    \definecolor{BackGroundGray}{RGB}{254,254,254}
+    \setbeamercolor{background canvas}{bg=BackGroundGray} % スライドモードのみ背景をわずかにグレーにする
+}
+
+%フラットデザイン化
+\setbeamertemplate{blocks}[rounded] % Blockの影を消す
+\useinnertheme{circles} % 箇条書きをシンプルに
+\setbeamertemplate{navigation symbols}{} % ナビゲーションシンボルを消す
+\setbeamertemplate{footline}[frame number] % フッターはスライド番号のみ
+
+%タイトルページ
+\setbeamertemplate{title page}{%
+    \vspace{2.5em}
+    {\usebeamerfont{title} \usebeamercolor[fg]{title} \inserttitle \par}
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle \par}
+    \vspace{1.5em}
+    \begin{flushright}
+        \usebeamerfont{author}\insertauthor\par
+        \usebeamerfont{institute}\insertinstitute \par
+        \vspace{3em}
+        \usebeamerfont{date}\insertdate\par
+        \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+    \end{flushright}
+}
+
+% graphicx.sty
+\usepackage{graphicx}
+
+%
+\def\qed{\hfill $\Box$}
+
+\AtBeginSection[]{
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+
+%タイトル
+\title{Monthly Meeting on September}
+\author{\textbf{Yuichiro Honda}}
+\date{2016/09/09}
+\institute{Morita lab. M1}
+\begin{document}
+\maketitle
+
+\section{Previous work}
+\begin{frame}{matroid}
+ \begin{block}{definition}
+  Let $M = (S, \mathcal{I})$ where $S$ is ground set, and $\mathcal{I}$ is a family satisfying $\mathcal{I} \subseteqq 2^S$. $M$ is called a \alert{matroid} when $\mathcal{I}$ satisfies:
+  \begin{align}
+   &\emptyset \in \mathcal{I} \\
+   &I_1 \subset I_2 , I_2 \in \mathcal{I} \Rightarrow I_1 \in \mathcal{I} \\
+   &I_1 , I_2 \in \mathcal{I} , |I_1| < |I_2| \Rightarrow \exists i_2 \in I_2 \setminus I_1 \, ; \; I_1 \cup \{i_2\} \in \mathcal{I}
+  \end{align}
+ \end{block}
+\end{frame}
+
+
+\begin{frame}{On Disjoint Common Bases in Two Matroids}
+ \begin{alertblock}{problem(open)} \it
+  input: $M_1 = (S,\,\mathcal{I}_1),\,\,M_2 = (S,\,\mathcal{I}_2)$ : matroids \\
+  output: partition of $S$ into common bases of $M_1$ and $M_2$ \\
+  \begin{figure}
+   \centering
+   \includegraphics[width=2cm]{partitioned-graph.png}
+  \end{figure}
+ \end{alertblock}
+ \vspace{0.5cm}
+ \centering{\large{$\rightarrow$ Can be solved in polynomial time?}}
+\end{frame}
+
+\begin{frame}{On Disjoint Common Bases in Two Matroids}
+ \begin{figure}
+  \centering
+  \includegraphics[width=12cm]{problem1.png}
+ \end{figure}
+\end{frame}
+
+
+\section{Progress}
+\begin{frame}{primitive plan}
+\begin{enumerate}
+ \item prepare some algorithm to find all common bases
+ \item check disjoint combination among them
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{primitive plan}
+\begin{enumerate}
+ \item prepare some algorithm to find all common bases
+ \item check disjoint combination among them \textcolor{red}{(NP hard?)}
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{primitive plan}
+ Last month, I came across a paper that suggested a method to find all common bases in two matroids in $O(n(n^2 + t)\lambda)$ : \\
+ {\it Finding all common bases in two matroids (Fukuda, Namiki 1993)} \\
+\end{frame}
+
+
+\begin{frame}{Hall's theorem}
+ $\mathcal{S} = \{S_\lambda\,|\,\,\lambda \in \Lambda\},\,\,S_\lambda$: finite set \\
+ \vspace{0.5cm}
+ \begin{block}{transversal}
+  $X = \{x_\lambda\,|\,\,\lambda \in \Lambda\}$ is \alert{transversal} of $\mathcal{S}$ when $\forall \lambda \in \Lambda \,;\,\,x_\lambda \in S_\lambda$ .
+ \end{block}
+ \begin{block}{marriage condition}
+  $\mathcal{S}$ satisfies the \alert{marriage condition} when \\
+  $\forall \mathcal{T} \subseteqq \mathcal{S}\,;\,\,|\mathcal{T}| \leq {\Bigl |}{\displaystyle \bigcup_{A\in \mathcal{T}}A}{\Bigr |}$
+ \end{block}
+\end{frame}
+
+
+\begin{frame}{Hall's theorem}
+ \begin{block}{Hall's theorem}
+  $\mathcal{S} = \{S_\lambda\,|\,\,\lambda \in \Lambda\},\,\,S_\lambda$: finite set \\
+  Then, \\ $\mathcal{S}$ satisfies marriage condition $\iff$ $\mathcal{S}$ has transversal
+ \end{block}
+\end{frame}
+
+\begin{frame}{Hall's theorem}
+ \begin{block}{Hall's theorem (graph theory)}
+  $G = (X + Y,\,\,E)$ : bipartite graph ($|X| = |Y|$)\\
+  $N_G (A)$ : neibourhood of $A \subseteqq X + Y$ \\
+  Then, \\ $\forall W \subseteqq X\,;\,\,|W| \leq |N_G (W)|$  $\iff$ $G$ has perfect matching
+ \end{block}
+\end{frame}
+
+
+\section{Next step}
+\begin{frame}{next month}
+ TODO:
+ \begin{enumerate}
+  \item continue to read a paper: Finding all common bases in two matroids (Fukuda, Namiki 1993)
+  \item think about whether $O(n(n^2 + t)\lambda)$ algorithm is applicable
+ \end{enumerate}
+\end{frame}
+
+\begin{frame}
+ \begin{center}
+  Thank you for your attention.
+ \end{center}
+\end{frame}
+\end{document}
