@@ -71,6 +71,7 @@
 \begin{document}
 \maketitle
 
+
 \section{Previous work}
 \begin{frame}{matroid}
  \begin{block}{definition}
@@ -85,7 +86,7 @@
 
 
 \begin{frame}{On Disjoint Common Bases in Two Matroids}
- \begin{alertblock}{problem(open)} \it
+ \begin{alertblock}{problem 1(open)} \it
   input: $M_1 = (S,\,\mathcal{I}_1),\,\,M_2 = (S,\,\mathcal{I}_2)$ : matroids \\
   output: partition of $S$ into common bases of $M_1$ and $M_2$ \\
   \begin{figure}
@@ -125,6 +126,8 @@
 \begin{frame}{primitive plan}
  Last month, I came across a paper that suggested a method to find all common bases in two matroids in $O(n(n^2 + t)\lambda)$ : \\
  {\it Finding all common bases in two matroids (Fukuda, Namiki 1993)} \\
+ $\lambda$: number of the solution \\
+ $t$: number of pivot
 \end{frame}
 
 
@@ -146,14 +149,12 @@
   $\mathcal{S} = \{S_\lambda\,|\,\,\lambda \in \Lambda\},\,\,S_\lambda$: finite set \\
   Then, \\ $\mathcal{S}$ satisfies marriage condition $\iff$ $\mathcal{S}$ has transversal
  \end{block}
-\end{frame}
-
-\begin{frame}{Hall's theorem}
  \begin{block}{Hall's theorem (graph theory)}
   $G = (X + Y,\,\,E)$ : bipartite graph ($|X| = |Y|$)\\
   $N_G (A)$ : neibourhood of $A \subseteqq X + Y$ \\
   Then, \\ $\forall W \subseteqq X\,;\,\,|W| \leq |N_G (W)|$  $\iff$ $G$ has perfect matching
  \end{block}
+ $\rightarrow$ in original theorem, $\Lambda = X,\,\mathcal{S} = \{N_G (\{x\})\,|\,\,x \in X\}\,$ then the second follows.
 \end{frame}
 
 
