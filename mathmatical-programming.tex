@@ -1,0 +1,239 @@
+%!TEX encoding = UTF-8 unicode
+\documentclass[10pt,a4paper]{jarticle}
+
+\def\baselinestretch{1.0} % 改行幅を調整したいときはここの数字を変更
+
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{psfrag}
+\usepackage{fancybox}
+\usepackage{ascmac}
+\usepackage{mathrsfs}
+\usepackage{otf}
+\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+%\usepackage{arydshln}
+%\usepackage{manyeqns}
+%\usepackage{jconference}
+%\usepackage{epsf}
+
+\setlength{\oddsidemargin}{-30pt}
+\setlength{\topmargin}{-40pt}
+\setlength{\headheight}{0pt}%0
+%\setlength{\footheight}{10pt}
+\setlength{\textwidth}{18cm}%18cm
+\setlength{\textheight}{25cm}%25cm
+\setlength{\columnsep}{20pt}%20pt
+
+\newtheorem{fact}{事実}
+\newtheorem{lemma}{補題}%[section]
+\newtheorem{assumption}{仮定}
+\newtheorem{condition}{条件}
+\newtheorem{proof}{証明}
+\newtheorem{theorem}{定理}%[section]
+\newtheorem{proposition}{命題}
+\newtheorem{corollary}{系}
+\newtheorem{definition}{定義}
+\newtheorem{remark}{注意}
+\newtheorem{problem}{問題}
+\newtheorem{example}{例}
+\newtheorem{defmark}{記号の定義}
+
+\def\rank{\mathop{\rm rank}}
+\def\Re{\mathop{\rm Re}}
+\def\Im{\mathop{\rm Im}}
+\def\N{\mathbb{N}}
+\def\diag{\mathop{\rm diag}}
+\def\blockdiag{\mathop{\rm block\ diag}}
+\def\bedr{\hfill $\Box$}
+\def\trace{\mathop{\rm tr}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+\def\T{\mathop{\rm T}}
+\def\H{\mathop{\rm H}}
+\def\elig{{\rm Elig}}
+\def\wx{\widetilde x}
+\def\Vec#1{\mbox{\boldmath $#1$}}
+\def\v#1{\mbox{\boldmath $#1$}}
+\def\defspace{$\vspace*{0.5mm}$}
+\def\E{\mathop{\rm E}}
+
+
+\makeatletter 
+
+\def\eqnarray{
+\stepcounter{equation}
+\let\@currentlabel=\theequation 
+\global\@eqnswtrue 
+\global\@eqcnt\z@ 
+\tabskip\@centering 
+\let\\=\@eqncr 
+$$\halign to \displaywidth\bgroup\@eqnsel\hskip\@centering 
+$\displaystyle\tabskip\z@{##}$&\global\@eqcnt\@ne 
+\hfil$\displaystyle{{}##{}}$\hfil 
+&\global\@eqcnt\tw@$\displaystyle\tabskip\z@{##}$\hfil 
+\tabskip\@centering&\llap{##}\tabskip\z@\cr} 
+
+%%% 数式番号を(節番.式番)と表示させたいときは
+%%% 下の2行のコメントを外す
+%\def\theequation{\thesection.\arabic{equation}} 
+%\@addtoreset{equation}{section}
+
+%%% 図の番号を(節番.図番)と表示させたいときは
+%%% 下の2行のコメントを外す
+%\def\thefigure{\thesection.\arabic{figure}}
+%\@addtoreset{figure}{section}
+
+
+
+%\renewcommand{\theenumi}{\roman{enumi}}
+
+%%% 脚注の記号を変更
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+\title{\bf 計画情報数理レポート課題}
+\author{森田研究室 M1 本田雄一郎}
+\date{2016年7月19日}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\pagestyle{plain}
+\maketitle
+
+\newpage
+\section{序論}
+最小包囲円問題，円詰め込み問題を勾配法で解くにあたって，今回は最急降下法を利用した．目的関数を$f(\v{x})$とすると，最急降下法のアルゴリズムは次で与えられる:
+\begin{algorithm}
+ \caption{最急降下法}
+ \label{alg1}
+ \begin{algorithmic}
+  \While{$\|\nabla f(\v{x})\| \geq \epsilon$}
+  \State{$\v{d} = -\nabla f(\v{x})$}
+  \State{$\v{x} := \v{x} + \alpha \v{d}$\hspace{15pt}// $\alpha$はステップ幅}
+  \EndWhile
+ \end{algorithmic}
+\end{algorithm}
+
+ただし，$\epsilon$は十分小さい正数である．最急降下法の各反復での移動方向$\v{d}$は次の式で与えられる．
+\[
+ \v{d} = -\nabla f(\v{x})
+\]
+この式で与えられる移動方向$\v{d}$は，勾配ベクトルとの内積が常に負になることから，関数の減少する移動方向であることが保証される．また，移動のステップ幅$\alpha$を与えるのには次のArmijoの方法を用いた:
+\begin{algorithm}
+ \caption{Armijoの方法}         
+ \label{alg2}    
+  \begin{algorithmic}
+   \State{$\alpha > 0,\,\beta \in (0,\, 1),\,\tau \in (0,\, 1)$}
+   \While{$f(\v{x} + \alpha\v{d}) > \tau\alpha\nabla f(\v{x})^{\top}\v{d}$}
+   \State{$\alpha := \beta\alpha$}
+   \EndWhile
+  \end{algorithmic}
+\end{algorithm}
+
+なお，言うまでもないことだが，勾配法を利用する際，問題に制約条件が付いている場合には，問題の目的関数にそのまま勾配法を適用できないことに注意すべきである．そのまま適用した場合，制約条件に違反してしまうおそれがあるからである．このような場合，制約条件の違反度をペナルティとして目的関数に加えた緩和問題を新たな目的関数にするなどの一手間が必要である．\\
+また，実行速度を上げるために工夫した点として，Armijoの方法で$\alpha$を求める際に，1つ前の反復で求めた$\alpha$を渡し，それを各ステップでの$\alpha$の初期値とした．これにより実行速度を15倍程度改善することができた．\\
+入力のサイズは$n = 20,\,100$の場合でそれぞれテストした．\\
+今回使用した初期値，パラメータなどは次の通りである:
+\begin{table}[ht]
+ \begin{center}
+  \begin{tabular}[t]{|c|c|c|c|} \hline
+   パラメータ & 文字 & 最小包囲円問題 & 円詰め込み問題 \\ \hline
+   大円半径初期値 & $r$ & 0.3 & ※1 \\ \hline
+   重み係数 & $\rho$ & 1.3 & 0.7 \\ \hline
+   勾配ベクトルノルムの誤差 & $\epsilon$ & $10^{-4}$ & $10^{-5}$\\ \hline
+   $\alpha$初期値(Armijoの方法) & $\alpha$ & 1.0 & 1.0 \\ \hline
+   $\alpha$更新時の乗数(Armijoの方法) & $\beta$ & 0.9 & 0.9 \\ \hline
+   一次近似係数(Armijoの方法) & $\tau$ & $10^{-4}$ & $10^{-5}$  \\ \hline
+  \end{tabular}
+ \end{center}
+\end{table}
+
+※1 入力された円の面積の総和をSとすると，$\sqrt{\frac{3S}{\pi}}$
+
+\newpage
+\section{最小包囲円問題}
+最小包囲円問題の定式化は次の式による．
+\begin{align*}
+ min \hspace{15pt} &r^2 \\
+ s.t. \hspace{15pt} &(x - x_i)^2 + (y - y_i)^2 \leq r^2\hspace{15pt}(i = 1, ..., n ) \\
+ &r \geq 0
+\end{align*}
+この問題は制約付き問題なので，このままでは直線探索法が適用できない．そのため，次のようにして制約条件をペナルティに変換したものを新たな目的関数として，無制約問題を作る（$\rho$はペナルティの重みである）:
+\begin{align*}
+ min \hspace{15pt} &r^2 + \rho\sum_{i = 1}^{n}max\{0, (x - x_i)^2 + (y - y_i)^2 - r^2\}
+\end{align*}
+
+実行結果:
+\begin{figure}[ht]
+ \begin{minipage}{0.5\hsize}
+  \includegraphics[width=6.5cm]{smallest-circle-init2.png}
+  \caption{最小包囲円(n = 20, 初期状態)}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+  \includegraphics[width=6.5cm]{smallest-circle-output2.png}
+  \caption{最小包囲円(n = 20, 出力)}
+ \end{minipage}
+\end{figure}
+\begin{figure}[ht]
+ \begin{minipage}{0.5\hsize}
+  \includegraphics[width=6.5cm]{smallest-circle-init.png}
+  \caption{最小包囲円(n = 100, 初期状態)}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+  \includegraphics[width=6.5cm]{smallest-circle-output.png}
+  \caption{最小包囲円(n = 100, 出力)}
+ \end{minipage}
+\end{figure}
+
+いずれも目的関数の値は徐々に減少していく様子が確認でき，勾配法が成功していることがわかった．
+
+\section{円詰め込み問題}
+円詰め込み問題の定式化は次の式による．
+\begin{align*}
+ min \hspace{15pt} &r \\
+ s.t. \hspace{15pt} &(x_i - x_j)^2 + (y_i - y_j)^2 \leq (r_i + r_j)^2\hspace{15pt}(i \neq j,\hspace{7pt}i,\,j = 1, ..., n) \\
+ &x_i^2 + y_i^2 \leq (r - r_i)^2 \\
+ &r \geq max\{r_i\,|\,i = 1, ..., n\}
+\end{align*}
+この問題もやはり制約付き問題なので，直線探索法が適用できない．そのため，次のようにして制約条件をペナルティに変換したものを新たな目的関数として，無制約問題を作る（$\rho$はペナルティの重みである）
+\begin{align*}
+ min \hspace{15pt} r &+ \rho\sum_{i = 1}^{n} \sum_{j = i + 1}^{n}max\{0, (r_i + r_j)^2 - (x_i - x_j)^2 - (y_i - y_j)^2\} \\
+ &+ \rho\sum_{i = 1}^{n}max\{0, x_i^2 + y_i^2 - (r - r_i)^2\} + \rho\,max\{0, max\{r_i\,|\,\,i = 1, ..., n\} - r\} 
+\end{align*}
+
+実行結果:
+\begin{figure}[ht]
+ \begin{minipage}{0.5\hsize}
+  \includegraphics[width=6.5cm]{circle-packing-init.png}
+  \caption{円詰め込み(n = 20, 初期状態)}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+  \includegraphics[width=6.5cm]{circle-packing-output.png}
+  \caption{円詰め込み(n = 20, 出力)}
+ \end{minipage}
+\end{figure}
+\begin{figure}[ht]
+ \begin{minipage}{0.5\hsize}
+  \includegraphics[width=6.5cm]{circle-packing-init2.png}
+  \caption{円詰め込み(n = 100, 初期状態)}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+  \includegraphics[width=6.5cm]{circle-packing-output2.png}
+  \caption{円詰め込み(n = 100, 出力)}
+ \end{minipage}
+\end{figure}
+
+円詰め込み問題では最適解を出力することはできていないが，いずれも目的関数の値が徐々に減少していく様子が確認でき，勾配法自体は成功していることがわかった．
+
+\section{考察}
+今回はArmijoの方法による直線探索法を用いて実装したものを示した．序論に示したように，アルゴリズム自体は非常に単純であるが，反復の1回あたりは非常に高速であり，1反復ごとに必ず関数の値を減少させることが確認された．円詰め込み問題に関しては，Wolfeの方法についても試してみたが，実行速度はArmijoの方法とほとんど変わらず，出力された解の精度が下がってしまったため，Armijoの方法によるものを採用した．$\tau_1,\,\tau_2$の取り方をいろいろ変えて試してみたものの，いずれも実行速度に影響はほとんどなく，解の精度が下がっただけであった． \\
+出力を見ると，最小包囲円問題では十分に信頼性の高い結果が得られたといえる．一方，円詰め込み問題では，目的関数の値は初期値に比べてかなり減少してはいるものの，最適値とは言い難い値に収束していることが伺える．これは最小包囲円問題が凸性を持つのに対して，円詰め込み問題は凸でなく，局所最適解が複数存在することによるものと思われる．円詰め込み問題に対してより高い精度で解を得ようとするならば，単純に直線探索をかけるだけでなく，入力された円の初期配置や，微妙にパラメーターを変更しながら直線探索を複数回かけるなどの工夫が必要と思われる． \\
+最後に，大まかな実行時間であるが，MacBook Air (1.7GHz Intel Core i5, 4GB 1600MHz DDR3) で実行した結果，最小包囲円問題の$n = 20$の場合0.6$\pm$0.05秒，$n = 100$の場合2.2$\pm$0.1秒，円詰め込み問題の$n = 20$の場合2.2$\pm$0.2秒，$n = 100$の場合120$\pm$10秒であった．これらはそれぞれ5回実行した結果のおおよその平均と分散である．
+
+\section{作成したコード，入力データ}
+http://github.com/yuichiro12/python
+\end{document}
+

@@ -1,21 +1,25 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=latex 2016.6.15)  5 JUL 2016 13:16
+<<<<<<< HEAD
+This is e-pTeX, Version 3.14159265-p3.5-130605-2.6 (utf8.euc) (TeX Live 2015/dev/Debian) (preloaded format=platex 2016.6.24)  9 SEP 2016 03:32
+=======
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2016.7.2)  20 JUL 2016 14:43
+>>>>>>> 8fdbfa398c17993d6d00a5c6af439a96ac2bc1dc
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**test
+**monthly20160909.
 
 ! Emergency stop.
-<*> test
-        
+<*> monthly20160909.
+                    
 End of file on the terminal!
 
  
 Here is how much of TeX's memory you used:
- 3 strings out of 493106
- 113 string characters out of 6137098
- 52473 words of memory out of 5000000
- 3570 multiletter control sequences out of 15000+600000
- 3640 words of font info for 14 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 0i,0n,0p,1b,6s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 4 strings out of 493799
+ 29 string characters out of 6153292
+ 53201 words of memory out of 5000000
+ 3571 multiletter control sequences out of 15000+600000
+ 7519 words of font info for 31 fonts, out of 8000000 for 9000
+ 929 hyphenation exceptions out of 8191
+ 0i,0n,0p,22b,6s stack positions out of 5000i,500n,10000p,200000b,80000s
 No pages of output.
