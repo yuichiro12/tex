@@ -64,7 +64,7 @@
 }
 
 %タイトル
-\title{Monthly Meeting on July}
+\title{Monthly Meeting on October}
 \author{\textbf{Yuichiro Honda}}
 \date{2016/10/05}
 \institute{Morita lab. M1}
@@ -72,17 +72,27 @@
 \begin{document}
 \maketitle
 
-\section{Introduction}
+\section{Previous work}
 \begin{frame}{matroid}
- 
+ \begin{enumerate}
+  \item searched an (polynomial) algorithm to partition two matroids into their common bases
+  \item found an algorithm to find all common bases in two matroids in $O(n(n^2+t)\lambda)$
+ \end{enumerate}
 \end{frame}
 
 
 
 \section{Progress}
-\begin{frame}{On Disjoint Common Bases in Two Matroids}
- \begin{block}{definition}
+\begin{frame}{References}
+ \begin{thebibliography}{9}
+  \bibitem{1}
+	\small{Komei Fukuda, Makoto Namiki: ``Finding all common bases in two matroids'', Discrete Applied Mathmatics 56 (1995) 231-243}
+ \end{thebibliography}
+\end{frame}
 
+\begin{frame}{Finding all common bases in two matroids}
+ \begin{block}{Main result}
+  Given two matroids $M_1$, $M_2$, and a common base $B^1$, there is an algorithm finding all common bases of them in \alert{$O(n(n^2+t)\lambda)$ }where $\lambda$ is number of the bases and $t$ is time to make one pivot operation.
  \end{block}
 \end{frame}
 
@@ -94,14 +104,8 @@
   \item learn about matroid intersecrion
   \item learn how to partition a matoid into bases
   \item tackle two different partition matroids (can be partitioned into their common bases)
-  \item generalized partition matroid of two different uniform matroids and a general matroid 
+  \item generalized partition matroid of two different uniform matroids and any matroid
  \end{enumerate}
 \end{frame}
 
-\begin{frame}{References}
- \begin{thebibliography}{9}
-  \bibitem{1}
-	\small{Komei Fukuda, Makoto Namiki: ``Finding all common bases in two matroids'', Discrete Applied Mathmatics 56 (1995) 231-243}
- \end{thebibliography}
-\end{frame}
 \end{document}
