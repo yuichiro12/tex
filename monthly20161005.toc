@@ -1,4 +1,4 @@
-\beamer@endinputifotherversion {3.33pt}
+\beamer@endinputifotherversion {3.36pt}
 \beamer@sectionintoc {1}{Previous work}{2}{0}{1}
 \beamer@sectionintoc {2}{Progress}{4}{0}{2}
 \beamer@sectionintoc {3}{Next step}{7}{0}{3}
