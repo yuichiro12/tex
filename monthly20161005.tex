@@ -96,6 +96,19 @@
  \end{block}
 \end{frame}
 
+\begin{frame}{Finding all common bases in two matroids}
+ \begin{block}{alogrithm ``Enumerate''}
+  input: $M_1 := (E,\,\mathcal{B}_1)$, $M_2 := (E,\,\mathcal{B}_2)$, $B^1 \in \mathcal{B}_1 \cap \mathcal{B}_2$\\
+  output: all common bases of $M_1$ and $M_2$\\
+  \begin{enumerate}
+   \item $k := 1$, output $B^k$. $P := (R, ..., R)$. (Here, $P \in \{L,\,R\}^n$)
+   \item $f := min\{j\,|\,\,P_j = R\}$
+   \item If $f$ doesn't exist, stop. Else, create $G := G(T_{M_1}(B^k),\,T_{M_2}(B^k))$ and find directed cycle $C$ satisfying theorem 1 with breadth first search.
+   \item If $C$ doesn't exist, goto step 2. Else, $k := k + 1$, make pivot operation along $C$ and obtain new $B^k$, $T_{M_1}(B^k)$, and $T_{M_2}(B^k)$. $P_f := L$, $\forall j < k;\,P_j := R$, goto step 2.
+  \end{enumerate}
+ \end{block}
+\end{frame}
+
 
 \section{Next step}
 \begin{frame}{next month}

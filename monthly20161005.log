@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (jis.euc) (TeX Live 2016) (preloaded format=platex 2016.10.3)  3 OCT 2016 21:55
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (jis.euc) (TeX Live 2016) (preloaded format=platex 2016.10.3)  4 OCT 2016 08:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1143,9 +1143,11 @@ LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
 (Font)              scaled to size 11.39996pt on input line 97.
  [6
 
-] (./monthly20161005.toc) [7
+] [7
 
-] [8
+] (./monthly20161005.toc) [8
+
+] [9
 
 ]
 \tf@nav=\write6
@@ -1157,22 +1159,22 @@ LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
 \tf@snm=\write8
 \openout8 = `monthly20161005.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 111.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 111.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 124.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 124.
  (./monthly20161005.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 111.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 111.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 124.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 124.
 Package rerunfilecheck Info: File `monthly20161005.out' has not changed.
 (rerunfilecheck)             Checksum: 3BCF5B747E1CD15483CF51433B372A6F;135.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 111.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 124.
  ) 
 Here is how much of TeX's memory you used:
- 19719 strings out of 493682
- 367126 string characters out of 6149641
- 424155 words of memory out of 5000000
- 22804 multiletter control sequences out of 15000+600000
+ 19721 strings out of 493682
+ 367142 string characters out of 6149641
+ 428155 words of memory out of 5000000
+ 22806 multiletter control sequences out of 15000+600000
  30848 words of font info for 109 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  56i,11n,55p,424b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on monthly20161005.dvi (8 pages, 37280 bytes).
+Output written on monthly20161005.dvi (9 pages, 46444 bytes).
