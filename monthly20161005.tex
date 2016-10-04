@@ -98,12 +98,25 @@
 
 \begin{frame}{Finding all common bases in two matroids}
  \begin{itemize}
-  \item The algorithm use enumeration tree whose height is $|E| = n$
-  \item In the beginning
+  \item The algorithm use enumeration tree whose height is $|E| = n$ and the height is indexed in descending order from the root
+  \item In the beginning, the initial comon base $B^1$ is placed at right most position
+  \item $n$-dimentional vector \alert{$P$} $\in \{L,\,R\}^n$ is used to indicate the current position
+  \item also current branch is indicated by \alert{$f$} $\in E$
+  \item Each one step of algorithm, \alert{$B^k$} goes left updating $B^k$ to $B^{k+1}$ if exists
  \end{itemize}
 \end{frame}
 
 \begin{frame}{Finding all common bases in two matroids}
+ example:
+ \begin{figure}
+  \centering
+  \includegraphics[width=7cm]{text4989-10.png}\vspace{0.3cm}\\
+  when the current base $B^k = \{1,\,3,\,4\}$ is placed like above,\\$P = (L\,L\,R\,R)$ and $f = 3$ 
+ \end{figure}
+\end{frame}
+
+\begin{frame}{Finding all common bases in two matroids}
+ next, we need a theorem to reduce the search space like a backtracking
  \begin{figure}
   \centering
   \includegraphics[width=5.2cm]{text4989-7.png}
@@ -112,7 +125,7 @@
 
 \begin{frame}{Finding all common bases in two matroids}
  \begin{figure}
-  bipartite graph $G$\vspace{1cm}\\
+  bipartite graph $G(B^k)$\vspace{1cm}\\
   \centering
   \includegraphics[width=6cm]{text8631-16-2-7.png}
  \end{figure}
@@ -120,13 +133,13 @@
 
 \begin{frame}{Finding all common bases in two matroids}
  \begin{block}{Theorem 1}
-  There exists a common base $B^{k+1}$ in $L$ if and only if there exists a directed cycle $C$ in $G$ which contains $f$ and consists of elements in $E$ less than or equal to $f$.
+  There exists a common base $B^{k+1}$ in $L$ if and only if there exists a directed cycle $C$ in $G(B^k)$ which contains $f$ and consists of elements in $E$ less than or equal to $f$.
  \end{block}
 \end{frame}
 
 \begin{frame}{Finding all common bases in two matroids}
  \begin{figure}
-  bipartite graph $G$\\
+  bipartite graph $G(B^k)$\\
   when $f = i_6$...\vspace{0.52cm}\\
   \centering
   \includegraphics[width=6cm]{text8631-16-2-7.png}
@@ -135,7 +148,7 @@
 
 \begin{frame}{Finding all common bases in two matroids}
  \begin{figure}
-  bipartite graph $G$\\
+  bipartite graph $G(B^k)$\\
   when $f = i_6$...\vspace{0.52cm}\\
   \centering
   \includegraphics[width=6cm]{text8631-16-2-8.png}\\
@@ -152,15 +165,22 @@
 \end{frame}
 
 \begin{frame}{Finding all common bases in two matroids}
+ simple algorithm example:\\
+ $M_1 = M_2 = (E, \mathcal{B})$\\
+ $E = \{1,\,2,\,3\}, \mathcal{B} = \{\{1,\,2\},\,\{2,\,3\}\}$\\
+ $B^1 = \{2,\,3\}$
+\end{frame}
+
+\begin{frame}{Finding all common bases in two matroids}
  \begin{figure}
   \centering
   \hspace{0.2cm}
   \includegraphics[width=5.2cm]{text4989.png}
  \end{figure}
  \begin{align*}
+  &B^1 = \{2,\,3\}\\
   &P = (R\,R\,R)\\
-  &P_1 = R \text{ then } f = 1\\
-  &B^1 = \{2,\,3\}
+  &P_1 = R \text{ then } f = 1
  \end{align*}
 \end{frame}
 
@@ -171,9 +191,9 @@
   \includegraphics[width=5.1cm]{text4989-2.png}
  \end{figure}
  \begin{align*}
+  &B^1 = \{2,\,3\}\\
   &P = (L\,R\,R)\\
-  &P_2 = R \text{ then } f = 2\\
-  &B^1 = \{2,\,3\}
+  &P_2 = R \text{ then } f = 2
  \end{align*}
 \end{frame}
 
@@ -184,10 +204,19 @@
   \includegraphics[width=5cm]{text4989-3.png}
  \end{figure}
  \begin{align*}
+  &B^1 = \{2,\,3\}\\
   &P = (L\,L\,R)\\
-  &P_3 = R \text{ then } f = 3\\
-  &B^1 = \{2,\,3\}
+  &P_3 = R \text{ then } f = 3
  \end{align*}
+\end{frame}
+
+\begin{frame}
+ \begin{figure}
+  \centering
+  \includegraphics[width=2cm]{path16961.png}\\
+  there exists an directed cycle $C$ in bipartite graph $G(B^1)$\\
+  $\rightarrow$make pivot operation along $C$ and get new base $B^2 = \{1,\,2\}$ 
+ \end{figure}
 \end{frame}
 
 \begin{frame}{Finding all common bases in two matroids}
@@ -197,9 +226,9 @@
   \includegraphics[width=5cm]{text4989-4.png}
  \end{figure}
  \begin{align*}
+  &B^2 = \{1,\,2\}\\
   &P = (R\,R\,L)\\
-  &P_1 = R \text{ then } f = 1\\
-  &B^2 = \{1,\,2\}
+  &P_1 = R \text{ then } f = 1
  \end{align*}
 \end{frame}
 
@@ -210,9 +239,9 @@
   \includegraphics[width=5.2cm]{text4989-5.png}
  \end{figure}
  \begin{align*}
+  &B^2 = \{1,\,2\}\\
   &P = (L\,R\,L)\\
-  &P_2 = R \text{ then } f = 2\\
-  &B^2 = \{1,\,2\}
+  &P_2 = R \text{ then } f = 2
  \end{align*}
 \end{frame}
 
@@ -223,9 +252,11 @@
   \includegraphics[width=5.2cm]{text4989-6.png}
  \end{figure}
  \begin{align*}
+  &B^2 = \{1,\,2\}\\
   &P = (L\,L\,L)\\
   &f \text{ doesn't exist}\\
   &\text{end}
+  \hspace{-0.1cm}
  \end{align*}
 \end{frame}
 
@@ -236,12 +267,21 @@
   \begin{enumerate}
    \item $k := 1$, output $B^k$. $P := (R, ..., R)$. (Here, $P \in \{L,\,R\}^n$)
    \item $f := min\{j\,|\,\,P_j = R\}$
-   \item If $f$ doesn't exist, stop. Else, create $G$ and find directed cycle $C$ satisfying theorem 1 with breadth first search.
-   \item If $C$ doesn't exist, goto step 2. Else, $k := k + 1$, make pivot operation along $C$ and obtain new $B^k$, $T_{M_1}(B^k)$, and $T_{M_2}(B^k)$. $P_f := L$, $\forall j < k;\,P_j := R$, goto step 2.
+   \item If $f$ doesn't exist, stop. Else, create $G(B^k)$ and find directed cycle $C$ satisfying theorem 1 with breadth first search.
+   \item If $C$ doesn't exist, goto step 2. Else, $k := k + 1$, make pivot operation along $C$ and obtain new $B^k$. $P_f := L$, $\forall j < k;\,P_j := R$, goto step 2.
   \end{enumerate}
  \end{block}
 \end{frame}
 
+\begin{frame}{Finding all common bases in two matroids}
+ Again, $n = |E|$, $\lambda = |\mathcal{B}_1 \cap \mathcal{B}_2|$, and $t$ is time to generate $G(B^k)$.
+ \begin{block}{time complexity}
+  We evaluate the time from obtaining $B^k$ to obtaining $B^{k+1}$. Let $A_{max}$ be the maximum number of the arc in $G(B^k)$. Then $C$ in $G(B^k)$ satisfying Theorem 1 can be found in $O(A_{max})$ using BFS. This is iterated at most $n$ times(until finding such $C$). If such $C$ exists, then we pivot elements in $B^k$ along $C$ to get $B^{k+1}$ and generate $G(B^{k+1})$. This takes $O(C_{max}t)$ where $C_{max}$ is the length of the $C$.\\
+  Since we know $A_{max} \leq (\frac{n}{2})^2 \cdot 2 = \frac{n^2}{2}$ and $C_{max}\leq 2 \cdot \frac{n}{2} = n$, it takes $O(n^3 + nt)$ from $B^k$ to $B^{k+1}$.\\
+This is iterated $\lambda$ times, so total time complexity is $O((n^3 + nt)\lambda)$.
+ \end{block}
+  (note: $t$ depends on the imput form of the matroid. for example, the matroid is given in a form of a map, $t = O(n^2)$, but matroid is given in a form of a matrix, it's more than $n^2$)
+\end{frame}
 
 \section{Next step}
 \begin{frame}{next month}
