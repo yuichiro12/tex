@@ -1,0 +1,154 @@
+%!TEX platex=1
+\documentclass[11pt,xcolor=dvipsnames,table,dvipdfmx]{beamer}
+\usepackage{amsmath, amssymb}
+\usepackage{latexsym}
+\usepackage{ascmac}
+\usepackage{bm}
+
+%Beamerの設定
+\usetheme{Boadilla}
+%Beamerフォント設定
+\usepackage{txfonts} % TXフォント
+\usepackage[deluxe]{otf} % 日本語多ウェイト化
+\renewcommand{\familydefault}{\sfdefault}  % 英文をサンセリフ体に
+\renewcommand{\kanjifamilydefault}{\gtdefault}  % 日本語をゴシック体に
+\usefonttheme{professionalfonts}
+\setbeamerfont{alerted text}{series=\bfseries} % Alertを太字
+\setbeamerfont{section in toc}{series=\mdseries} % 目次は太字にしない
+\setbeamerfont{frametitle}{size=\Large} % フレームタイトル文字サイズ
+\setbeamerfont{title}{size=\LARGE} % タイトル文字サイズ
+\setbeamerfont{date}{size=\small}  % 日付文字サイズ
+
+%Beamer色設定
+\definecolor{UniBlue}{RGB}{0,150,200} 
+\definecolor{AlertOrange}{RGB}{255,76,0}
+\definecolor{AlmostBlack}{RGB}{38,38,38}
+\setbeamercolor{normal text}{fg=AlmostBlack}  % 本文カラー
+\setbeamercolor{structure}{fg=UniBlue} % 見出しカラー
+\setbeamercolor{block title}{fg=UniBlue!50!black} % ブロック部分タイトルカラー
+\setbeamercolor{alerted text}{fg=AlertOrange} % \alert 文字カラー
+\mode<beamer>{
+    \definecolor{BackGroundGray}{RGB}{254,254,254}
+    \setbeamercolor{background canvas}{bg=BackGroundGray} % スライドモードのみ背景をわずかにグレーにする
+}
+
+%フラットデザイン化
+\setbeamertemplate{blocks}[rounded] % Blockの影を消す
+\useinnertheme{circles} % 箇条書きをシンプルに
+\setbeamertemplate{navigation symbols}{} % ナビゲーションシンボルを消す
+\setbeamertemplate{footline}[frame number] % フッターはスライド番号のみ
+
+%タイトルページ
+\setbeamertemplate{title page}{%
+    \vspace{2.5em}
+    {\usebeamerfont{title} \usebeamercolor[fg]{title} \inserttitle \par}
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle \par}
+    \vspace{1.5em}
+    \begin{flushright}
+        \usebeamerfont{author}\insertauthor\par
+        \usebeamerfont{institute}\insertinstitute \par
+        \vspace{3em}
+        \usebeamerfont{date}\insertdate\par
+        \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+    \end{flushright}
+}
+
+% graphicx.sty
+\usepackage{graphicx}
+
+%
+\def\qed{\hfill $\Box$}
+
+\AtBeginSection[]{
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+
+%タイトル
+\title{Monthly Meeting on October}
+\author{\textbf{Yuichiro Honda}}
+\date{2016/11/02}
+\institute{Morita lab. M1}
+
+\begin{document}
+\maketitle
+
+\section{Previous work}
+\begin{frame}{Last month}
+ \begin{itemize}
+  \item read a paper about an algorithm to find all common bases in two matroids in $O(n(n^2+t)\lambda)$
+ \end{itemize}
+\end{frame}
+
+\section{Progress}
+\begin{frame}{Matroid Intersection Problem}
+ \begin{block}{Problem}
+  input: \,\, $M_1 = (E, \mathcal{I}_1),\,\,M_2 = (E, \mathcal{I}_2)$ : matroids\\
+  output: maximum-cardinality set $S \in \mathcal{I}_1 \cap \mathcal{I}_2$
+ \end{block}
+ note: Generally, $(E,\,\,\mathcal{I}_1 \cap \mathcal{I}_2)$ is not a matroid.
+\end{frame}
+
+\begin{frame}{Matroid Intersection Problem}
+ \begin{block}{Lemma: unique perfect matching implies exchange}
+  $M_1 := (E, \mathcal{I}): matroid$\\
+  $S \in \mathcal{I},\,\,T \subset E$\\
+  $S$
+ \end{block}
+ \begin{block}{Lemma: shortest implies augmenting}
+  $M_1 := (E, \mathcal{I}_1),\,\, M_2 := (E, \mathcal{I}_2)$: matroid\\
+  $S \in \mathcal{I}_1 \cap \mathcal{I}_2$\\
+  If $P$ is a shortest source-sink dipath in $\mathcal{G}(S)$, then $P$ is augmenting path.
+ \end{block}
+\end{frame}
+
+\begin{frame}{Matroid Intersection Problem}
+ \begin{figure}
+  \caption{$\mathcal{G}(S) := (S+E \setminus S,\,\, A)$ :bipartite graph}
+  \centering
+  \includegraphics[width=6cm]{matching.png}\vspace{0.5cm}
+ \end{figure}
+\end{frame}
+
+\begin{frame}{Matroid Intersection Problem}
+ \begin{figure}
+  \caption{source-sink dipath is augmenting path}
+  \centering
+  \includegraphics[width=6cm]{matching2.png}\vspace{0.5cm}
+ \end{figure}
+\end{frame}
+
+\begin{frame}{Matroid Intersection Problem}
+ \begin{block}{Matroid Intersection Algorithm}
+  input: \,\, $M_1 = (E, \mathcal{I}_1),\,\,M_2 = (E, \mathcal{I}_2)$ : matroids\\
+  output: maximum-cardinality set $S \in \mathcal{I}_1 \cap \mathcal{I}_2$
+  \begin{enumerate}
+   \item Start with $S \in \mathcal{I}_1 \cap \mathcal{I}_2$ such as $S := \emptyset $
+   \item While $\mathcal{G}(S)$ has a source-sink dipath:\\
+	 (1) $P := (e_0, f_1, e_1, ..., f_n, e_n)$ be an augmenting sequense\\
+	 (2) $S := S \cup \{e_j |\,\,0 \leq j \leq n\} \setminus \{f_j |\,\,1 \leq j \leq n\}$
+  \end{enumerate}
+ \end{block}
+ \begin{itemize}
+  \item finding $P$ in $\mathcal{G}(S)$ requires $O(n^2)$\\
+  \item  after step 2(2), regenerate $\mathcal{G}(S)$ requires $O(\tau n)$\\
+ \end{itemize}
+ $\rightarrow$ totally we have $O(\tau n^3)$ as time complexity
+\end{frame}
+
+\section{Next step}
+\begin{frame}{next month}
+ TODO:
+ \begin{itemize}
+  \item learn about alogrithm for finding k-best perfect matching
+ \end{itemize}
+\end{frame}
+
+\section{Reference}
+\begin{frame}{Reference}
+ \begin{thebibliography}{9}
+  \bibitem{1}
+	  \small{Jon Lee: ``A First Course in Combinatorial Optimization''}
+ \end{thebibliography}
+\end{frame}
+
+\end{document}
