@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (jis.euc) (TeX Live 2016) (preloaded format=platex 2016.10.4)  31 OCT 2016 18:35
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (jis.euc) (TeX Live 2016) (preloaded format=platex 2016.10.4)  31 OCT 2016 21:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1148,31 +1148,53 @@ LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 105.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 111.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 105.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 111.
+File: matching3.png Graphic file (type bmp)
+ <matching3.png>
+Overfull \vbox (1.46426pt too high) detected at line 111
+ []
+
+[7
+
+]
+File: matching4.png Graphic file (type bmp)
+ <matching4.png>
+Overfull \vbox (1.46426pt too high) detected at line 124
+ []
+
+[8
+
+]
+File: matching5.png Graphic file (type bmp)
+ <matching5.png> [9
+
+] [10
+
+]
 File: matching.png Graphic file (type bmp)
- <matching.png> [7
+ <matching.png> [11
 
 ]
 File: matching2.png Graphic file (type bmp)
- <matching2.png> [8
+ <matching2.png> [12
+
+] [13
 
 ]
-[9
+(./monthly20161102.toc) [14
 
-] (./monthly20161102.toc) [10
+] [15
 
-] [11
-
-] (./monthly20161102.toc) [12
+] (./monthly20161102.toc) [16
 
 ]
 File: beamericonarticle.pdf Graphic file (type pdf)
 
 <beamericonarticle.pdf>
 File: beamericonarticle.pdf Graphic file (type pdf)
- <beamericonarticle.pdf> [13
+ <beamericonarticle.pdf> [17
 
 ]
 \tf@nav=\write6
@@ -1184,26 +1206,26 @@ File: beamericonarticle.pdf Graphic file (type pdf)
 \tf@snm=\write8
 \openout8 = `monthly20161102.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 149.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 149.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 195.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 195.
  (./monthly20161102.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 149.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 149.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 195.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 195.
 Package rerunfilecheck Info: File `monthly20161102.out' has not changed.
 (rerunfilecheck)             Checksum: 6C59F7244BBAA5036FE29BF71D8AD70D;179.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 149.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 195.
  ) 
 Here is how much of TeX's memory you used:
- 19831 strings out of 493682
- 368831 string characters out of 6149641
- 426155 words of memory out of 5000000
- 22900 multiletter control sequences out of 15000+600000
+ 19851 strings out of 493682
+ 369141 string characters out of 6149641
+ 427155 words of memory out of 5000000
+ 22914 multiletter control sequences out of 15000+600000
  45146 words of font info for 155 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  56i,11n,55p,424b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on monthly20161102.dvi (13 pages, 57124 bytes).
+Output written on monthly20161102.dvi (17 pages, 69024 bytes).
