@@ -5,40 +5,40 @@
 \usepackage{ascmac}
 \usepackage{bm}
 
-%Beamer$B$N@_Dj(B
+%Beamerの設定
 \usetheme{Boadilla}
-%Beamer$B%U%)%s%H@_Dj(B
-\usepackage{txfonts} % TX$B%U%)%s%H(B
-\usepackage[deluxe]{otf} % $BF|K\8lB?%&%'%$%H2=(B
-\renewcommand{\familydefault}{\sfdefault}  % $B1QJ8$r%5%s%;%j%UBN$K(B
-\renewcommand{\kanjifamilydefault}{\gtdefault}  % $BF|K\8l$r%4%7%C%/BN$K(B
+%Beamerフォント設定
+\usepackage{txfonts} % TXフォント
+\usepackage[deluxe]{otf} % 日本語多ウェイト化
+\renewcommand{\familydefault}{\sfdefault}  % 英文をサンセリフ体に
+\renewcommand{\kanjifamilydefault}{\gtdefault}  % 日本語をゴシック体に
 \usefonttheme{professionalfonts}
-\setbeamerfont{alerted text}{series=\bfseries} % Alert$B$rB@;z(B
-\setbeamerfont{section in toc}{series=\mdseries} % $BL\<!$OB@;z$K$7$J$$(B
-\setbeamerfont{frametitle}{size=\Large} % $B%U%l!<%`%?%$%H%kJ8;z%5%$%:(B
-\setbeamerfont{title}{size=\LARGE} % $B%?%$%H%kJ8;z%5%$%:(B
-\setbeamerfont{date}{size=\small}  % $BF|IUJ8;z%5%$%:(B
+\setbeamerfont{alerted text}{series=\bfseries} % Alertを太字
+\setbeamerfont{section in toc}{series=\mdseries} % 目次は太字にしない
+\setbeamerfont{frametitle}{size=\Large} % フレームタイトル文字サイズ
+\setbeamerfont{title}{size=\LARGE} % タイトル文字サイズ
+\setbeamerfont{date}{size=\small}  % 日付文字サイズ
 
-%Beamer$B?'@_Dj(B
+%Beamer色設定
 \definecolor{UniBlue}{RGB}{0,150,200} 
 \definecolor{AlertOrange}{RGB}{255,76,0}
 \definecolor{AlmostBlack}{RGB}{38,38,38}
-\setbeamercolor{normal text}{fg=AlmostBlack}  % $BK\J8%+%i!<(B
-\setbeamercolor{structure}{fg=UniBlue} % $B8+=P$7%+%i!<(B
-\setbeamercolor{block title}{fg=UniBlue!50!black} % $B%V%m%C%/ItJ,%?%$%H%k%+%i!<(B
-\setbeamercolor{alerted text}{fg=AlertOrange} % \alert $BJ8;z%+%i!<(B
+\setbeamercolor{normal text}{fg=AlmostBlack}  % 本文カラー
+\setbeamercolor{structure}{fg=UniBlue} % 見出しカラー
+\setbeamercolor{block title}{fg=UniBlue!50!black} % ブロック部分タイトルカラー
+\setbeamercolor{alerted text}{fg=AlertOrange} % \alert 文字カラー
 \mode<beamer>{
     \definecolor{BackGroundGray}{RGB}{254,254,254}
-    \setbeamercolor{background canvas}{bg=BackGroundGray} % $B%9%i%$%I%b!<%I$N$_GX7J$r$o$:$+$K%0%l!<$K$9$k(B
+    \setbeamercolor{background canvas}{bg=BackGroundGray} % スライドモードのみ背景をわずかにグレーにする
 }
 
-%$B%U%i%C%H%G%6%$%s2=(B
-\setbeamertemplate{blocks}[rounded] % Block$B$N1F$r>C$9(B
-\useinnertheme{circles} % $B2U>r=q$-$r%7%s%W%k$K(B
-\setbeamertemplate{navigation symbols}{} % $B%J%S%2!<%7%g%s%7%s%\%k$r>C$9(B
-\setbeamertemplate{footline}[frame number] % $B%U%C%?!<$O%9%i%$%IHV9f$N$_(B
+%フラットデザイン化
+\setbeamertemplate{blocks}[rounded] % Blockの影を消す
+\useinnertheme{circles} % 箇条書きをシンプルに
+\setbeamertemplate{navigation symbols}{} % ナビゲーションシンボルを消す
+\setbeamertemplate{footline}[frame number] % フッターはスライド番号のみ
 
-%$B%?%$%H%k%Z!<%8(B
+%タイトルページ
 \setbeamertemplate{title page}{%
     \vspace{2.5em}
     {\usebeamerfont{title} \usebeamercolor[fg]{title} \inserttitle \par}
@@ -60,31 +60,139 @@
 \def\qed{\hfill $\Box$}
 
 \AtBeginSection[]{
-    \frame{\tableofcontents[currentsection, hideallsubsections]} %$BL\<!%9%i%$%I(B
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
 }
 
-%$B%?%$%H%k(B
-\title{common lisp$B$G<BAu$9$k<+F0HyJ,%"%k%4%j%:%`(B}
+%タイトル
+\title{common lispで自動微分アルゴリズム}
 \author{\textbf{Yuichiro Honda}}
 \date{2016/09/16}
 \begin{document}
 \maketitle
 
-\section{$B<+F0HyJ,$H$O(B}
-\begin{frame}{$BLdBj0U<1(B}
- $B7W;;5!>e$GHyJ,!J8{G[%Y%/%H%k!K$rB.$/!$@53N$K7W;;$7$?$$!%(B
- $BHyJ,$NMQES!'(B
+\section{自動微分とは}
+\begin{frame}{問題意識}
+ 計算機上で微分（勾配ベクトル）を速く，正確に計算したい\\
+ (性質のいい)関数が与えられたとき，その微分も一意的に定まるはずだが，現状多くの場合微分の関数も手書きで別に与えなければならない \\
+ 微分の用途：
+ \begin{itemize}
+  \item 最適化アルゴリズム
+  \item 感度分析
+  \item 物理モデリング
+  \item 機械学習 etc...
+ \end{itemize}
+ 微分は極限を扱うが，計算機には「無限」が理解できない．\\
+ → 近似の必要性
+\end{frame}
+
+\begin{frame}{定式化}
+ 入力：関数$f$，点$x$ \\
+ 出力：入力関数の点$x$での微分値
+\end{frame}
+
+\begin{frame}{近似}
+ よく見る微分の姿：
+ \begin{itemize}
+  \item 数値微分:
+	\[
+	 \frac{df(x)}{dx} = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
+	\]
+  \item 数式微分:
+	\begin{align*}
+	 \frac{d(u(x)+v(x))}{dx} = \frac{du(x)}{dx}+\frac{dv(x)}{dx} \\
+	 \frac{du(x)v(x)}{dx} = u(x)\frac{dv(x)}{dx} + \frac{du(x)}{dx}v(x)
+	\end{align*}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{近似}
+ 数値微分の難点：
+ \begin{itemize}
+  \item 一般的な近似: $\frac{df(x)}{dx} = \frac{f(x+h)-f(x)}{h}$ ($h$は適当に小さい値)
+  \item 差分法を用いることによって生じる離散化誤差
+ \end{itemize}
+ 数式微分の難点：
+ \begin{itemize}
+  \item $\frac{d(make-point(x, y))}{dx}$など，別の場所で定義された関数への操作が難しい．
+  \item $\frac{d(u_1(x)u_2(x)...u_{1000}(x))}{dx}$とかだと全部バラす前にスタックオーバーフローしないか心配...
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{自動微分}
+ \begin{block}{自動微分の原理}
+  \begin{align*}
+   f&(x + \epsilon) = f(x) + f'(x)\epsilon \\
+   &\text{$f$: 点$x$で微分可能な任意の関数} \\
+   &\text{$\epsilon$: \alert{二重数}の複零元}
+  \end{align*}
+ \end{block}
+\end{frame}
+
+\section{二重数}
+\begin{frame}{二重数}
+ 二重数：複零元(二乗すると$0$になる数)$\epsilon$を用いた実数の拡張 \\
+ 任意の二重数は$a+b\epsilon$の形で表せる
+ \begin{exampleblock}{二重数の基本演算}
+  \begin{align*}
+   &\text{加算：}(a + b\epsilon) + (c + d\epsilon) = (a + c) + (b + d)\epsilon \\
+   &\text{乗算：}(a + b\epsilon)(c + d\epsilon) = ac + (ad + bc)\epsilon \\
+   &\text{除算：}\frac{a + b\epsilon}{c + d\epsilon} = \frac{(a + b\epsilon)(c - d\epsilon)}{(c + d\epsilon)(c - d\epsilon)} = \frac{ac + (bc - ad)\epsilon}{c^2}
+  \end{align*}
+ \end{exampleblock}
+\end{frame}
+
+\begin{frame}{二重数}
+ \begin{exampleblock}{二重数と関数}
+  \begin{align*}
+   f(a + b\epsilon) &= \sum_{n = 0}^{\infty}\frac{f^{(n)}(a)(b\epsilon)^n}{n!}\hspace{1.0cm}\text{（テイラー展開）} \\
+   &= f(a) + \frac{f'(a)b\epsilon}{1!} + \frac{f''(a)(b\epsilon)^2}{2!} + ... \\
+   &= f(a) + bf'(a)\epsilon
+  \end{align*}
+ \end{exampleblock}
+\end{frame}
+
+\begin{frame}{二重数} 
+ \begin{exampleblock}{二重数の基本演算(初等関数)}
+  \begin{align*}
+   &e^{a + b\epsilon} = e^a\sum_{n = 0}^{\infty}\frac{(b\epsilon)^n}{n!} = e^a(1 + b\epsilon) \\
+   &\sin(a + b\epsilon) = \sum_{n = 0}^{\infty}\frac{\sin^{(n)} a (b\epsilon)^n}{n!} = \sin a + b\epsilon \cos a \\
+   &\cos(a + b\epsilon) = \sum_{n = 0}^{\infty}\frac{\sin^{(n)} a (b\epsilon)^n}{n!} = \cos a - b\epsilon \sin a
+  \end{align*}
+ \end{exampleblock}
+\end{frame}
+
+\section{実装}
+\begin{frame}{実装}
+ 実装の手順
  \begin{enumerate}
-  \item $B:GE,2=%"%k%4%j%:%`(B
-  \item $B46EYJ,@O(B
-  \item $BJ*M}%b%G%j%s%0(B
-  \item $B5!3#3X=,(B etc...
- \end{enumerate}
- $BHyJ,$O6K8B$r07$&$,!$7W;;5!$K$O!VL58B!W$,M}2r$G$-$J$$!%(B
- $B"*(B $B6a;w$NI,MW@-(B
- $B$h$/8+$kHyJ,$N;Q!'(B
- \begin{enumerate}
-  \item $B?tCMHyJ,(B: $\frac{df(x)}{dx} = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}$
-  \item $B?t<0HyJ,(B: $\frac{d(u(x)+v(x))}{dx} = u(x)\frac{dv(x)}{dx} + \frac{du(x)}{dx}v(x)$
+  \item 二重数(dual-number)を構造体によって定義
+  \item numberに適用できる標準的なメソッドをgenericに再定義し，dual-numberに適用できるようにする
+  \item 入力関数$f$，点$a$に対して$f(a + \epsilon)$を計算
+  \item 3.で計算した$\epsilon$の係数を取り出す
  \end{enumerate}
 \end{frame}
+
+
+\section{まとめ}
+\begin{frame}{できたこと}
+  \begin{itemize}
+   \item 加減乗除，初等関数($sin x$，$cos x$，$e^x$，$\sqrt{x}$)の組み合わせで表される関数の微分を実現した
+   \item lispでpackageの作り方を学習した
+   \item 二重数の代数的理解が深まった
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{できなかったこと}
+ \begin{itemize}
+  \item 数多あるメソッドの再定義(大小比較，$log$，$mod$とかは入れたかった)
+  \item 零除算などの例外処理
+  \item マクロをうまくつかう
+  \item 高速化
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{感想}
+ common lispには演算子オーバーロードというか演算子が無いのでメソッドをgenericに再定義する手法を取ったが，再定義したメソッドにmapcarなどをかけられないという制約が痛かった．マクロなどをうまく使えば解決できるかもしれないし，そもそももっといい方法があるかもしれない．
+\end{frame}
+
+\end{document}
