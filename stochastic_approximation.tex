@@ -1,0 +1,107 @@
+%!TEX platex=1
+\documentclass[11pt,xcolor=dvipsnames,table,dvipdfmx]{beamer}
+\usepackage{amsmath, amssymb}
+\usepackage{latexsym}
+\usepackage{ascmac}
+\usepackage{bm}
+
+%Beamerの設定
+\usetheme{Boadilla}
+%Beamerフォント設定
+\usepackage{txfonts} % TXフォント
+\usepackage[deluxe]{otf} % 日本語多ウェイト化
+\renewcommand{\familydefault}{\sfdefault}  % 英文をサンセリフ体に
+\renewcommand{\kanjifamilydefault}{\gtdefault}  % 日本語をゴシック体に
+\usefonttheme{professionalfonts}
+\setbeamerfont{alerted text}{series=\bfseries} % Alertを太字
+\setbeamerfont{section in toc}{series=\mdseries} % 目次は太字にしない
+\setbeamerfont{frametitle}{size=\Large} % フレームタイトル文字サイズ
+\setbeamerfont{title}{size=\LARGE} % タイトル文字サイズ
+\setbeamerfont{date}{size=\small}  % 日付文字サイズ
+
+%Beamer色設定
+\definecolor{UniBlue}{RGB}{0,150,200} 
+\definecolor{AlertOrange}{RGB}{255,76,0}
+\definecolor{AlmostBlack}{RGB}{38,38,38}
+\setbeamercolor{normal text}{fg=AlmostBlack}  % 本文カラー
+\setbeamercolor{structure}{fg=UniBlue} % 見出しカラー
+\setbeamercolor{block title}{fg=UniBlue!50!black} % ブロック部分タイトルカラー
+\setbeamercolor{alerted text}{fg=AlertOrange} % \alert 文字カラー
+\mode<beamer>{
+    \definecolor{BackGroundGray}{RGB}{254,254,254}
+    \setbeamercolor{background canvas}{bg=BackGroundGray} % スライドモードのみ背景をわずかにグレーにする
+}
+
+%フラットデザイン化
+\setbeamertemplate{blocks}[rounded] % Blockの影を消す
+\useinnertheme{circles} % 箇条書きをシンプルに
+\setbeamertemplate{navigation symbols}{} % ナビゲーションシンボルを消す
+\setbeamertemplate{footline}[frame number] % フッターはスライド番号のみ
+
+%タイトルページ
+\setbeamertemplate{title page}{%
+    \vspace{2.5em}
+    {\usebeamerfont{title} \usebeamercolor[fg]{title} \inserttitle \par}
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle \par}
+    \vspace{1.5em}
+    \begin{flushright}
+        \usebeamerfont{author}\insertauthor\par
+        \usebeamerfont{institute}\insertinstitute \par
+        \vspace{3em}
+        \usebeamerfont{date}\insertdate\par
+        \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+    \end{flushright}
+}
+
+% graphicx.sty
+\usepackage{graphicx}
+
+%
+\def\qed{\hfill $\Box$}
+
+\AtBeginSection[]{
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+
+%タイトル
+\title{非線形多次元確率近似法の停止則}
+\author{\textbf{Yuichiro Honda}}
+\date{2016/12/05}
+\institute{Morita lab. M1}
+
+\begin{document}
+\maketitle
+
+\section{論文紹介}
+\begin{frame}{論文紹介}
+ \begin{thebibliography}{9}
+  \bibitem{1} \scriptsize{非線形多次元確率近似法の停止則　第57回自動制御連合会　2014年11月10日-12日}
+ \end{thebibliography}
+\end{frame}
+
+\section{動機}
+\begin{frame}{動機}
+ \begin{itemize}
+  \footnotesize
+  \item 未知の非線形方程式を雑音付き観測値から反復解放で解く（確率近似法）
+  \item 有限回の反復で停止して得られる解候補が，真の解にどの程度近いか評価したい
+  \item 従来研究では，各反復での計算の事後情報を利用していて事前に反復回数を見積もることができない，反復回数が十分に大きいと仮定しているなどの問題点があった
+  \item 本論文は，1変数の場合の議論を多変数へと拡張したものであることに注意する
+ \end{itemize}
+\end{frame}
+
+\section{問題の定式化}
+\begin{frame}{定式化}
+ 
+\end{frame}
+
+\section{主結果}
+\begin{frame}{主結果}
+ \begin{block}{定理1}
+  任意に与えた定数$\alpha \in (0, \infty)$，$\beta \in (0, \infty)$をもとに，
+ \end{block}
+\end{frame}
+
+\section{まとめ}
+
+\end{document}
