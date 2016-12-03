@@ -38,6 +38,30 @@
 \setbeamertemplate{navigation symbols}{} % ナビゲーションシンボルを消す
 \setbeamertemplate{footline}[frame number] % フッターはスライド番号のみ
 
+%マクロ
+\def\rank{\mathop{\rm rank}}
+\def\Re{\mathop{\rm Re}}
+\def\Im{\mathop{\rm Im}}
+\def\N{\mathbb{N}}
+\def\diag{\mathop{\rm diag}}
+\def\blockdiag{\mathop{\rm block\ diag}}
+\def\bedr{\hfill $\Box$}
+\def\trace{\mathop{\rm tr}}
+\def\R{\mathbb{R}}
+\def\P{\mathop{\rm P}}
+\def\C{\mathbb{C}}
+\def\T{\mathop{\rm T}}
+\def\H{\mathop{\rm H}}
+\def\elig{{\rm Elig}}
+\def\wx{\widetilde x}
+\def\tx{\tilde x}
+\def\Vec#1{\mbox{\boldmath $#1$}}
+\def\v#1{\mbox{\boldmath $#1$}}
+\def\defspace{$\vspace*{0.5mm}$}
+\def\E{\mathop{\rm E}}
+\def\Var{\mathop{\rm Var}}
+\def\tr{\mathop{\rm tr}}
+
 %タイトルページ
 \setbeamertemplate{title page}{%
     \vspace{2.5em}
@@ -72,14 +96,14 @@
 \begin{document}
 \maketitle
 
-\section{論文紹介}
+\section{reference}
 \begin{frame}{論文紹介}
  \begin{thebibliography}{9}
   \bibitem{1} \scriptsize{非線形多次元確率近似法の停止則　第57回自動制御連合会　2014年11月10日-12日}
  \end{thebibliography}
 \end{frame}
 
-\section{動機}
+\section{motivation}
 \begin{frame}{動機}
  \begin{itemize}
   \footnotesize
@@ -90,18 +114,165 @@
  \end{itemize}
 \end{frame}
 
-\section{問題の定式化}
+\section{fomulation}
 \begin{frame}{定式化}
- 
+ 標準的な確率近似法
+ \begin{align}
+  x_{k+1} = x_k - a_k y_k
+ \end{align}
+ により，未知の非線形方程式
+ \begin{align}
+  f(x) = 0
+ \end{align}
+ の解を求める問題を考える（$f: \R^n \mapsto \R^n$）．ただし，$k \in \N$は反復回数，
+ \begin{align}
+  y_k = f(x_k) + \xi_k
+ \end{align}
+ は雑音付き観測値，$a_k$はステップサイズ（後述）である．観測雑音$\xi_k \in \R^n$は独立で同じ分布に従う確率変数ベクトルであり，平均$\E[\xi_k] = 0$, 有界な分散$\Var[\xi_k] = \Sigma \geq 0$を持つとする．
 \end{frame}
 
-\section{主結果}
+\begin{frame}{仮定}
+ \begin{block}{仮定1}
+  関数$f$は微分可能であり，任意の$x$について，
+  \begin{align}
+   \|\int_0^1 I - \frac{\nabla f(x^* + t(x - x^*))}{\zeta}dt\| \leq 1 - \eta
+  \end{align}
+  を満足する$\zeta \in (0, \infty)$, $\eta \in (0, 1)$が存在する．
+ \end{block}
+ この$\zeta$, $\eta$に対して，ステップサイズ$a_k$を
+ \begin{align*}
+  a_k = \frac{1}{\eta\zeta(k_0 + k)}
+ \end{align*}
+ と定める．
+\end{frame}
+
+\section{main result}
 \begin{frame}{主結果}
  \begin{block}{定理1}
-  任意に与えた定数$\alpha \in (0, \infty)$，$\beta \in (0, \infty)$をもとに，
+  任意に与えた定数$\alpha \in (0, \infty)$，$\beta \in (0, \infty)$をもとに，$\overline{k} \in \N$, $k_0 \in \N$が
+  \begin{align}
+   &\overline{k} \geq \max\{\tau_1, \tau_2\}, \hspace{1cm}k_0 \geq \frac{1}{\eta} \\
+   &\tau_1 := \frac{k_0 + 1}{\sqrt{\alpha}} - k_0, \hspace{0.75cm}\tau_2 := \frac{4 \tr \Sigma}{\beta \eta^2 \zeta^2} - k_0
+  \end{align}
+  を満足するように選ぶ．このとき，任意の初期解候補$x_1 \in \R^n$に対して，アルゴリズム(1)が生成する$\overline{k}$番目以降の解候補$x_k,\,\,k >\overline{k}$は
+  \begin{align}
+   \E[\|x_k - x^*\|^2] \leq \alpha\|x_1 - x^*\|^2 + \beta
+  \end{align}
+  を満たす．ただし，$k_0$は安定化定数とよばれる．
  \end{block}
 \end{frame}
 
-\section{まとめ}
+\begin{frame}{定理1の意義}
+ \begin{block}{定理1(7) (再掲)}
+  \[
+   \E[\|x_k - x^*\|^2] \leq \alpha\|x_1 - x^*\|^2 + \beta
+  \]
+ \end{block}
+ \begin{itemize}
+  \item 事後情報に依存していない．
+  \item 適切な反復回数$\overline{k}$を与えれば，解の候補$x_k$と$x^*$の距離の二乗の期待値が指定したパラメータ以下に抑えられる．
+  \item 特に，$\Var[\|x_k - x^*\|] \leq \E[\|x_k - x^*\|^2] \leq \alpha\|x_1 - x^*\|^2 + \beta
+$であるから，$\overline{k}$番目以降の解候補の分散を抑えられる．
+  \item 定理1の式(7)を用いて，$x_k$と$x^*$の距離をより直接的に評価することができる．
+ \end{itemize}
+\end{frame}
 
+\begin{frame}{より直接的な解候補の評価}
+ \begin{block}{補足1}
+  定理1が成り立つとき，任意の$\gamma \in (0, 1)$に対し，$\overline{k}$番目以降の解候補$x_k$は
+  \begin{align*}
+   \P\left[\|x_k - x^*\| \leq \left(1 + \frac{1}{\sqrt{\gamma}}\right)\left(\sqrt{\alpha}\|x_k - x^*\| + \sqrt{\beta}\right)\right] \geq 1 - \gamma
+  \end{align*}
+  を満たす．
+ \end{block}
+ \begin{exampleblock}{チェビシェフの不等式（の特殊な場合）}
+  確率変数$X$とその平均$\mu$，分散$\sigma^2$に対し，
+  \[
+   \forall k > 0;\hspace{0.3cm}P[X - \mu \geq k\sigma] \leq \frac{1}{k^2}
+  \]
+ \end{exampleblock}
+ \begin{exampleblock}{イェンゼンの不等式（の特殊な場合）}
+  \[
+   \E[X^2] \geq (E[X])^2
+  \]
+ \end{exampleblock}
+\end{frame}
+
+\begin{frame}{補足1の証明}
+ \small
+ $\|x_k - x^*\|$は確率変数であるから，チェビシェフの不等式で$X = \|x_k - x^*\|$，$k = \frac{1}{\sqrt{\gamma}}$とすると，
+ \[
+  \P\left[\|x_k - x^*\| - \E[\|x_k - x^*\|] \geq \frac{1}{\sqrt{\gamma}}\sqrt{\Var[\|x_k - x^*\|]}\right] \leq \gamma
+ \]
+すなわち，
+ \begin{align} 
+  \P\left[\|x_k - x^*\| \leq \E[\|x_k - x^*\|] + \frac{1}{\sqrt{\gamma}}\sqrt{\Var[\|x_k - x^*\|]}\right] \geq 1 - \gamma
+ \end{align}
+ ここで，分散と期待値の関係より，
+ \begin{align} 
+  \sqrt{\Var[\|x_k - x^*\|^2]} = \sqrt{\E[\|x_k - x^*\|^2] - (\E[\|x_k - x^*\|])^2} \leq \sqrt{\E[\|x_k - x^*\|^2]}
+ \end{align}
+ また，イェンゼンの不等式より，$(\E[\|x_k - x^*\|])^2 \leq \E[\|x_k - x^*\|^2]$であるので，
+ \begin{align}
+  \E[\|x_k - x^*\|] \leq \sqrt{\E[\|x_k - x^*\|^2]}
+ \end{align}
+\end{frame}
+
+\begin{frame}{補足1の証明(2)}
+ \small
+ (9), (10)より，(8)は
+ \begin{align*}
+  \P\left[\|x_k - x^*\| \leq \left(1 + \frac{1}{\sqrt{\gamma}}\right)\sqrt{\E[\|x_k - x^*\|^2]}\right] \geq 1 - \gamma
+ \end{align*}
+ となる．いま，定理1の式(7)より，$\E[\|x_k - x^*\|^2] \leq \alpha\|x_k - x^*\|^2 + \beta$であったから，
+ \begin{align*}
+  \P\left[\|x_k - x^*\| \leq \left(1 + \frac{1}{\sqrt{\gamma}}\right)\sqrt{\alpha\|x_k - x^*\|^2 + \beta}\right] \geq 1 - \gamma
+ \end{align*}
+ $x,\,y \geq 0$に対して，$\sqrt{x + y} \leq \sqrt{x} + \sqrt{y}$であるため，
+ \begin{align*}
+  \P\left[\|x_k - x^*\| \leq \left(1 + \frac{1}{\sqrt{\gamma}}\right)\left(\sqrt{\alpha}\|x_k - x^*\| + \sqrt{\beta}\right)\right] \geq 1 - \gamma
+ \end{align*}
+ 補足1の式が導かれた．
+\end{frame}
+
+\begin{frame}{定理1の証明}
+ \begin{exampleblock}{補題1}
+  \begin{align}
+   \E[\|\tx_k\|^2] \leq \phi(k, 1)\|\tx_1\|^2 + \sum^{k-1}_{j=1}\frac{\phi(k, j+1)}{\eta^2\zeta^2(k_0 + j)^2}\tr{\Sigma}
+  \end{align}
+  が成り立つ．ただし，
+  \begin{displaymath}
+    \phi(i,j) = \left\{
+    \begin{array}{l}
+     \displaystyle
+     \prod^{i-1}_{l=j}\left(1-\frac{1}{k_0 + l}\right)^2\,\,(i > j)\\
+     1 \,\,\hspace{2.5cm}(i \leq j)
+    \end{array}
+    \right.
+  \end{displaymath}
+  である．
+ \end{exampleblock}
+\end{frame}
+
+\begin{frame}{定理1の証明(2)}
+ \begin{exampleblock}{補題2}
+  \begin{align}
+   \E[\|\tx_k\|^2] \leq \left(\frac{k_0 + 1}{k_0 + k}\right)^2\|\tx_1\|^2 +\frac{4\tr\Sigma}{\eta^2\zeta^2(k_0 + k)}
+  \end{align}
+ \end{exampleblock}
+ 補題2と定理1の(5)，(6)より，$k \geq \overline{k}$ならば，
+ \begin{align*}
+  \E[\|\tx_k\|^2] &\leq \left(\frac{k_0 + 1}{k_0 + k}\right)^2\|\tx_1\|^2 +\frac{4\tr\Sigma}{\eta^2\zeta^2(k_0 + k)}\\
+  &\leq\left(\frac{k_0 + 1}{k_0 + k}\right)^2\|\tx_1\|^2 +\frac{4\tr\Sigma}{\eta^2\zeta^2(k_0 + k)}\\
+  &= \alpha\|\tx_1\|^2 + \beta
+ \end{align*}
+\end{frame}
+
+\section{conclusion}
+\begin{frame}
+ \begin{itemize}
+  \item 与えたパラメータに対して適当な反復回数を選ぶと，アルゴリズム停止時に得られた解候補と真の解との距離が確率的に評価できることを見た．
+  \item $\alpha$，$\beta$を小さく選べば，精度保証に必要な反復回数は多くなるものの，解候補と真の解の距離の二乗平均値，分散が$\alpha$，$\beta$の式で抑えられることを確認した．
+ \end{itemize}
+\end{frame}
 \end{document}
