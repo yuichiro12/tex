@@ -1,0 +1,309 @@
+%!TEX platex=1
+\documentclass[11pt,xcolor=dvipsnames,table,dvipdfmx,aspectratio=169]{beamer}
+\usepackage{amsmath, amssymb}
+\usepackage{latexsym}
+\usepackage{ascmac}
+\usepackage{bm}
+
+%キャプション設定
+\usepackage{caption}
+\captionsetup[figure]{font=scriptsize}
+
+%Beamerの設定
+\usetheme{Boadilla}
+%Beamerフォント設定
+\usepackage{txfonts} % TXフォント
+\usepackage[deluxe]{otf} % 日本語多ウェイト化
+\renewcommand{\familydefault}{\sfdefault}  % 英文をサンセリフ体に
+\renewcommand{\kanjifamilydefault}{\gtdefault}  % 日本語をゴシック体に
+\usefonttheme{professionalfonts}
+\setbeamerfont{alerted text}{series=\bfseries} % Alertを太字
+\setbeamerfont{section in toc}{series=\mdseries} % 目次は太字にしない
+\setbeamerfont{frametitle}{size=\Large} % フレームタイトル文字サイズ
+\setbeamerfont{title}{size=\LARGE} % タイトル文字サイズ
+\setbeamerfont{date}{size=\small}  % 日付文字サイズ
+
+%Beamer色設定
+\definecolor{UniBlue}{RGB}{0,150,200} 
+\definecolor{AlertOrange}{RGB}{255,76,0}
+\definecolor{AlmostBlack}{RGB}{38,38,38}
+\setbeamercolor{normal text}{fg=AlmostBlack}  % 本文カラー
+\setbeamercolor{structure}{fg=UniBlue} % 見出しカラー
+\setbeamercolor{block title}{fg=UniBlue!50!black} % ブロック部分タイトルカラー
+\setbeamercolor{alerted text}{fg=AlertOrange} % \alert 文字カラー
+\mode<beamer>{
+    \definecolor{BackGroundGray}{RGB}{254,254,254}
+    \setbeamercolor{background canvas}{bg=BackGroundGray} % スライドモードのみ背景をわずかにグレーにする
+}
+
+% 注釈を 1) 2) 3)の形式に変更
+\renewcommand\thefootnote{\arabic{footnote})}
+
+% Algorithm系
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\renewcommand\algorithmicrequire{\textbf{Input:}}
+\renewcommand\algorithmicensure{\textbf{Output:}}
+
+%マクロ
+\def\rank{\mathop{\rm rank}}
+\def\Re{\mathop{\rm Re}}
+\def\Im{\mathop{\rm Im}}
+\def\N{\mathbb{N}}
+\def\diag{\mathop{\rm diag}}
+\def\blockdiag{\mathop{\rm block\ diag}}
+\def\bedr{\hfill $\Box$}
+\def\trace{\mathop{\rm tr}}
+\def\R{\mathbb{R}}
+\def\P{\mathop{\rm P}}
+\def\C{\mathbb{C}}
+\def\I{\mathcal{I}}
+\def\B{\mathcal{B}}
+\def\D{\mathcal{D}}
+\def\T{\mathop{\rm T}}
+\def\H{\mathop{\rm H}}
+\def\elig{{\rm Elig}}
+\def\wx{\widetilde x}
+\def\tx{\tilde x}
+\def\Vec#1{\mbox{\boldmath $#1$}}
+\def\v#1{\mbox{\boldmath $#1$}}
+\def\defspace{$\vspace*{0.5mm}$}
+\def\E{\mathop{\rm E}}
+\def\Var{\mathop{\rm Var}}
+\def\tr{\mathop{\rm tr}}
+\def\sm{\setminus}
+\def\hs{\hspace{0.2cm}}
+
+%フラットデザイン化
+\setbeamertemplate{blocks}[rounded] % Blockの影を消す
+\useinnertheme{circles} % 箇条書きをシンプルに
+\setbeamertemplate{navigation symbols}{} % ナビゲーションシンボルを消す
+\setbeamertemplate{footline}[frame number] % フッターはスライド番号のみ
+
+%タイトルページ
+\setbeamertemplate{title page}{%
+    \vspace{2.5em}
+    {\usebeamerfont{title} \usebeamercolor[fg]{title} \inserttitle \par}
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle \par}
+    \vspace{1.5em}
+    \begin{flushright}
+        \usebeamerfont{author}\insertauthor\par
+        \usebeamerfont{institute}\insertinstitute \par
+        \vspace{3em}
+        \usebeamerfont{date}\insertdate\par
+        \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+    \end{flushright}
+}
+
+% graphicx.sty
+\usepackage{graphicx}
+
+%
+\def\qed{\hfill $\Box$}
+
+\AtBeginSection[]{
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+
+%タイトル
+\title{$k$最短路の探索}
+\author{\textbf{本田雄一郎}}
+\date{2017/01/30}
+\institute{大阪大学情報科学研究科\\情報数理学専攻 森田研究室 M1}
+
+\usepackage{multicol}	% required for `\multicols' (yatex added)
+\begin{document}
+\maketitle
+
+\begin{frame}{紹介する論文}
+ D.Eppstein: ``Finding the {\it k} shortest paths'' SIAM Journal on Computing 28(2) (1997)
+\end{frame}
+
+\begin{frame}{問題設定}
+  \begin{block}{問題}
+  \textbf{Input:}
+  \begin{itemize}
+   \item $G = (E, V)$: 有向グラフ
+   \item $c: E \rightarrow R_+$: 正の辺重み関数
+   \item $s, t \in V$: 始点，終点
+  \end{itemize}
+  \textbf{Output:}
+  \begin{itemize}
+   \item $p_1, p_2, ..., p_k$: $1$〜$k$最短路
+  \end{itemize}
+ \end{block}
+\end{frame}
+
+\begin{frame}{主結果}
+ \begin{block}{主結果}
+  グラフ$G$における$s$から$t$への$1$〜$k$最短路を$O(m + n\log n + k)$で列挙できる．
+ \end{block}
+\end{frame}
+
+\begin{frame}{手順}
+ 大まかには以下の流れで$k$最短路を求めるためのグラフ$P(G)$を作成する．
+ \begin{enumerate}
+  \item 最短路木$T$の作成．($O(m + n \log n)$)
+  \item 2つの2分ヒープの族$H_{out}(v)$，$H_T(v) \hs (v \in V)$を作成．($O(m)$，$O(n \log n)$)
+  \item $H_{out}(v)$，$H_T(v)$をマージして3分ヒープからなる非巡回グラフ$D(G)$を作成．($O(n \log n)$)
+  \item $D(G)$に辺と頂点を追加し，4分ヒープからなるグラフ$P(G)$を作成．($O(m + n \log n)$)
+ \end{enumerate}
+\end{frame}
+
+\begin{frame}{用語整理}
+ \begin{itemize}
+  \item $d(u, v)$:\hs 頂点$u$から頂点$v$への最短路の距離
+  \item $l(e)$:\hs 辺$e$の長さ
+  \item $tail(e)$，$head(e)$:\hs 有向辺$e$の始点，終点
+  \item $\delta(e) := l(e) + d(head(e), t) - d(tail(e), t)$:\hs $e$を通ったことによる最短路との差
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{有向グラフ$G$と最短路木$T$}
+ \begin{figure}[htbp]
+  \begin{minipage}{0.3\hsize}
+   \centering
+   \includegraphics[width=5cm]{graphG.png}
+   \caption{$G$}
+  \end{minipage}
+  \begin{minipage}{0.2\hsize}
+   \centering
+   \includegraphics[width=0.75cm]{rightarrow.png}
+  \end{minipage}
+  \begin{minipage}{0.3\hsize}
+   \centering
+   \includegraphics[width=5cm]{shortestPathTreeT.png}
+   \caption{最短路木$T$}
+  \end{minipage}
+ \end{figure}
+ \begin{itemize}
+  \item $G$内で，$t$から逆向きにDijkstra法を適用することで$T$を得る．($O(m + n \log n)$)
+  \item $T$の各頂点の重みは$t$からの距離．
+  \item $T$内で頂点$v$の次に来る頂点を$next_T(v)$と表す．
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{$G-T$と$sidetracks$}
+ \begin{figure}[htbp]
+  \begin{minipage}{0.4\hsize}
+   \centering
+   \includegraphics[width=5cm]{G-T.png}
+   \caption{$G-T$}
+  \end{minipage}
+  \hspace{1cm}
+  \begin{minipage}{0.4\hsize}
+   \includegraphics[width=5cm]{sidetracks.png}
+   \caption{$sidetracks(p)$}
+  \end{minipage}
+ \end{figure}
+ $G$内の$s-t$道$p$が与えられたとき，辺集合$sidetracks(p)$を次のように定める．
+ \begin{align*}
+   sidetracks(p) = \{e|\hs e \in G-T, e \in p\}
+ \end{align*}
+ $G-T$内の$sidetracks(p)$は$G$内の$s-t$道$p$と1対1に対応する．
+\end{frame}
+
+\begin{frame}{2つのヒープの作成(1)}
+ \begin{figure}[htbp]
+  \begin{minipage}{0.3\hsize}
+   \centering
+   \includegraphics[width=5cm]{portionOfT.png}
+   \caption{最短路木$T$の部分グラフ}
+  \end{minipage}
+  \begin{minipage}{0.2\hsize}
+   \centering
+   \includegraphics[width=0.75cm]{rightarrow.png}
+  \end{minipage}
+  \begin{minipage}{0.3\hsize}
+   \centering
+   \includegraphics[width=5cm]{Hout(v).png}
+   \caption{$H_{out}(v)$}
+  \end{minipage}
+ \end{figure}
+ \begin{itemize}
+  \item 各頂点$v$について，$(v, w) \in G-T$となる最小の辺(以後，$outroot(v)$と呼ぶ)を取り出し，残りの辺でヒープを作る．作成したヒープの根を$outroot(v)$の右の子とする．($O(m)$)
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{2つのヒープの作成(2)}
+ \begin{figure}[htbp]
+  \begin{minipage}{0.3\hsize}
+   \centering
+   \includegraphics[width=5cm]{Hout(v).png}
+   \caption{$H_{out}(v)$}
+  \end{minipage}
+  \begin{minipage}{0.2\hsize}
+   \centering
+   \includegraphics[width=0.75cm]{rightarrow.png}
+  \end{minipage}
+  \begin{minipage}{0.3\hsize}
+   \centering
+   \includegraphics[width=5.5cm]{HT(v).png}
+   \caption{$H_T(v)$}
+  \end{minipage}
+ \end{figure}
+ \begin{itemize}
+  \item $H_T(t) := {outroot(t)}$．$H_T(next_T(v))$に$outroot(v)$を挿入し$H_T(v)$を構成．($O(n\log n)$)
+  \item $H_{out}(v)$，$H_T(v)$の頂点はグラフ$G$の辺と1対1に対応することに注意．
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{$D(G)$から$P(G)$の構成へ}
+  \begin{figure}[htbp]
+  \begin{minipage}{0.3\hsize}
+   \centering
+   \vspace{0.7cm}
+   \includegraphics[width=5cm]{D(G).png}
+   \caption{有向非巡回グラフ$D(G)$}
+  \end{minipage}
+  \begin{minipage}{0.2\hsize}
+   \centering
+   \includegraphics[width=0.75cm]{rightarrow.png}
+  \end{minipage}
+  \begin{minipage}{0.3\hsize}
+   \centering
+   \includegraphics[width=6cm]{P(G).png}
+   \caption{グラフ$P(G)$}
+  \end{minipage}
+ \end{figure}
+ \begin{itemize}
+  \scriptsize
+  \item ヒープ$H_T(v)$，$H_{out}(v)$をマージしてグラフ$D(G)$を作成．（$D(G)$の頂点の出次数は高々3となることに注意）
+  \item $D(G)$に根となる頂点$r(s)$を追加し，$r(s)$から$h(s)$への辺重みを$\delta(h(s))$とする．
+  \item $D(G)$内の辺$(u, v)$の重みを$\delta(v)-\delta(u)$で定める．
+  \item $D(G)$内の頂点$p$が対応する$G$内の辺$(x, y)$に対し，辺$(p, h(y))$を$D(G)$内に追加し，重みを$\delta(h(y))$で定める．
+  \item $P(G)$は右図の様になる(※)．なお，上記の作業は全て$O(m + n \log n)$で行えることに注意．
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{$P(G)$の性質}
+ \begin{enumerate}
+  \item $P(G)$は$O(m + n \log n)$個の頂点を持つ．
+  \item $P(G)$の頂点の出次数は高々$4$である．
+  \item $P(G)$の辺は非負の重みを持つ．
+  \item $G$内の$s-t$道と$P(G)$内の$r$から出発した道は1対1に対応する．
+  \item $P(G)$内の道$p'$の重みを$l$とすると，対応する$G$内$s-t$道$p$の重みは$d(s, t)+l$で表せる．
+ \end{enumerate}
+\end{frame}
+
+\begin{frame}{ヒープに関する補題}
+ \begin{block}{補題 (Frederickson, 1993)}
+  2分ヒープ内の$k$番目に小さい要素を$O(k)$で取得できる．
+ \end{block}
+ \begin{exampleblock}{4分ヒープから2分ヒープへの変形}
+  \begin{figure}
+   \centering
+   \includegraphics[width=14cm]{4heap2binaryheap.png}
+  \end{figure}
+ \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Reference}
+ \begin{thebibliography}{9}
+  \bibitem{1} D.Eppstein: ``Finding the {\it k} shortest paths'' SIAM Journal on Computing 28(2) (1997)
+  \bibitem{2} G.N.Frederickkson: ``An optimal algorithm for selection in a min-heap'' Information and Computation 104 (1993)
+ \end{thebibliography}
+\end{frame}
+
+
+\end{document}
