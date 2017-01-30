@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (jis.euc) (TeX Live 2016) (preloaded format=platex 2016.10.4)  30 JAN 2017 08:41
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (jis.euc) (TeX Live 2016) (preloaded format=platex 2016.10.4)  30 JAN 2017 09:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1381,6 +1381,8 @@ LaTeX Font Info:    Font shape `JY1/hgt/m/it' will be
 File: beamericonarticle.pdf Graphic file (type pdf)
  <beamericonarticle.pdf> [14
 
+] [15
+
 ]
 \tf@nav=\write6
 \openout6 = `k-shortest_path.nav'.
@@ -1391,26 +1393,27 @@ File: beamericonarticle.pdf Graphic file (type pdf)
 \tf@snm=\write8
 \openout8 = `k-shortest_path.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 309.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 309.
- (./k-shortest_path.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 309.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 309.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 318.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 318.
+
+(./k-shortest_path.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 318.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 318.
 Package rerunfilecheck Info: File `k-shortest_path.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 309.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 318.
  ) 
 Here is how much of TeX's memory you used:
- 21643 strings out of 493682
- 399190 string characters out of 6149641
+ 21645 strings out of 493682
+ 399206 string characters out of 6149641
  460900 words of memory out of 5000000
- 24672 multiletter control sequences out of 15000+600000
+ 24674 multiletter control sequences out of 15000+600000
  60414 words of font info for 204 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  56i,11n,63p,424b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on k-shortest_path.dvi (14 pages, 58868 bytes).
+Output written on k-shortest_path.dvi (15 pages, 64156 bytes).

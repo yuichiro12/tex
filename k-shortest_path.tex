@@ -269,7 +269,7 @@
  \begin{itemize}
   \scriptsize
   \item ヒープ$H_T(v)$，$H_{out}(v)$をマージしてグラフ$D(G)$を作成．（$D(G)$の頂点の出次数は高々3となることに注意）
-  \item $D(G)$に根となる頂点$r(s)$を追加し，$r(s)$から$h(s)$への辺重みを$\delta(h(s))$とする．
+  \item $D(G)$に根となる頂点$r(s)$を追加し，$r(s)$から$h(s):=outroot(s)$への辺重みを$\delta(h(s))$とする．
   \item $D(G)$内の辺$(u, v)$の重みを$\delta(v)-\delta(u)$で定める．
   \item $D(G)$内の頂点$p$が対応する$G$内の辺$(x, y)$に対し，辺$(p, h(y))$を$D(G)$内に追加し，重みを$\delta(h(y))$で定める．
   \item $P(G)$は右図の様になる(※)．なお，上記の作業は全て$O(m + n \log n)$で行えることに注意．
@@ -305,5 +305,14 @@
  \end{thebibliography}
 \end{frame}
 
+\begin{frame}{Appendix}
+ \begin{block}{$P(G)$の性質の証明}
+  \scriptsize
+  1: $v \in V$に対し，(i)$H_T(v)$の頂点のうちラベルが付与されたものと，(ii)$H_{out}(v)$内の頂点全てと，(iii)$r(s)$が$P(G)$の頂点となる．\\ \hs\hs(i)は$O(\sum_{k=1}^{n}\log k) = O(n\log n)$，(ii)は$O(m)$，(iii)は$O(1)$であるから，$O(V(P(G))) = O(m + n \log n)$．\\
+  2: $D(G)$の出次数が高々3であることと，各頂点が1本だけ$cross edge$を持つことから明らか．\\
+  3: $D(G)$がヒープであるので，各辺$(u, v)$は$\delta(v)-\delta(u)\geq 0$を満たす．また，$G$の辺重みが非負であるので$\forall v \in P(G);\, \delta(h(v))\geq 0$．\\
+  4，5: 省略
+ \end{block}
+\end{frame}
 
 \end{document}
